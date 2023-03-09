@@ -3,6 +3,7 @@ import { NavBar } from './components/section/nav/Nav'
 import { Outlet } from 'react-router-dom'
 import { Footer } from './components/section/footer/Footer'
 import { FloatingNav } from './components/section/floating-nav/FloatingNav'
+import { Menu } from './components/menu/menu'
 
 function App() {
   // kolla om floting nav borde visas eller gömmas
