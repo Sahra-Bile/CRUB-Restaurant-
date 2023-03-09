@@ -1,17 +1,20 @@
-import React from 'react'
-
-import './App.css'
-import { Nav } from './components/section/nav/Nav'
+import './App.scss'
+import { NavBar } from './components/section/nav/Nav'
 import { Outlet } from 'react-router-dom'
 import { Footer } from './components/section/footer/Footer'
-import { createRestaurant } from './services/createRestaurant'
+import { FloatingNav } from './components/section/floating-nav/FloatingNav'
 
 function App() {
-  createRestaurant()
+  // kolla om floting nav borde visas eller gömmas
+
+  // kolla om vi scrolled ska upp eller nere rund 20px
+
+  // cleanup function
+
   return (
-    <>
+    <main>
       <header>
-        <Nav></Nav>
+        <NavBar></NavBar>
       </header>
       <main className="App">
         <Outlet></Outlet>
@@ -19,7 +22,8 @@ function App() {
       <footer>
         <Footer />
       </footer>
-    </>
+      <FloatingNav />
+    </main>
   )
 }
 

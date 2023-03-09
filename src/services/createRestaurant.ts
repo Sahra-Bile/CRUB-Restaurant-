@@ -12,6 +12,3 @@ export const createRestaurant =  async():Promise<IRestaurant[]> =>{
 
 }
 
-console.log(' denna är id vi ska få' + createRestaurant);
-
-
