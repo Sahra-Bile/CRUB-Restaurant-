@@ -3,6 +3,7 @@ import { NavBar } from './components/section/nav/Nav'
 import { Outlet } from 'react-router-dom'
 import { Footer } from './components/section/footer/Footer'
 import { FloatingNav } from './components/section/floating-nav/FloatingNav'
+import { CustomerForm } from './components/customerForm/customerForm'
 
 function App() {
   // kolla om floting nav borde visas eller gömmas
@@ -18,6 +19,7 @@ function App() {
       </header>
       <main className="App">
         <Outlet></Outlet>
+        <CustomerForm></CustomerForm>
       </main>
       <footer>
         <Footer />
