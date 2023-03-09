@@ -4,11 +4,8 @@ export interface IRestaurant {
    
 }
 
-
   interface IAddress{
    street:string,
    zip:string,
    city:string,
- 
-
   }
