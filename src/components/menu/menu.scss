@@ -1,0 +1,30 @@
+@use '../style/variables.scss' as v;
+
+.menu-container{
+
+    &__title{
+        font-family: v.$title;
+    }
+    &__article{
+        margin: 2em;
+        padding: 1em;
+
+        &__title{
+            font-family: v.$title;
+            margin: 1em;
+            
+        }
+        &__name{
+            font-family: v.$title;
+            margin-top: 1em;
+            margin-bottom: 0.6em;
+        }
+        &__is{
+            font-family: v.$regular;
+        }
+        &__price{
+            font-family: v.$regular;
+            padding-left: 0.8em;
+        }
+    }
+}
