@@ -13,11 +13,10 @@
             font-family: v.$regular;
         }
     }
+
+   
     &__img{
         width: 100%;
-    }
-    &__src{
-
     }
     @include m.tablet{
         position: relative;
