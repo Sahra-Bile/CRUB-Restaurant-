@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-scrollspy": "^3.3.5",
     "sass": "^1.58.3"
   }
 }

@@ -1,7 +1,8 @@
 import React from 'react'
 import { data } from './data'
-import './FloatingNav.scss'
-import { Scrollspy } from 'react-scrollspy'
+import './floatingNav.scss'
+
+import Scrollspy from 'react-scrollspy'
 import { Navbar } from './Navbar'
 
 export const FloatingNav = () => {
