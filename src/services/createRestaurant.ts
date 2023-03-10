@@ -2,6 +2,8 @@ import axios from 'axios';
 import {IRestaurant} from "../models/IRestaurant "
 
 
+ const resturantId =  "64089b0d76187b915f68e16f";
+
 
 export const createRestaurant =  async():Promise<IRestaurant[]> =>{
 

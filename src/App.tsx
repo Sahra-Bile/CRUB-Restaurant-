@@ -5,12 +5,6 @@ import { Footer } from './components/section/footer/Footer'
 import { FloatingNav } from './components/section/floating-nav/FloatingNav'
 
 function App() {
-  // kolla om floting nav borde visas eller gömmas
-
-  // kolla om vi scrolled ska upp eller nere rund 20px
-
-  // cleanup function
-
   return (
     <main>
       <header>
