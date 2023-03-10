@@ -1,0 +1,52 @@
+@use "../../style/variables.scss" as v;
+@use "../../style/mixins.scss" as m;
+
+.footer {
+  width: 100%;
+
+  background-color: rgba(33, 104, 105, 0.58);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    color: white;
+
+    @include m.tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+    &__sectioning {
+      margin: 15px;
+    }
+    &__column {
+      display: flex;
+      flex-direction: column;
+
+      @include m.tablet {
+        flex-direction: row;
+      }
+
+      &__icon {
+        font-size: 25px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      &__icon:hover {
+        transform: translateY(-0.5rem);
+      }
+    }
+
+    &__list {
+      font-size: 20px;
+    }
+  }
+}
+
+.mail:hover {
+  cursor: pointer;
+}
