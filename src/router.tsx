@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from './App'
+import { Admin } from './components/admin/admin'
 import { Menu } from './components/menu/menu'
 import { Contact } from './components/section/contact/Contact'
 import { Home } from './components/section/home/Home'
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: '/menu',
         element: <Menu />
+      },
+      {
+        path: '/admin',
+        element: <Admin />
       }
     ],
   },
