@@ -2,15 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mynerve&display=swap');
 
-$dark: #374151;
-$darker: #1f2937;
-$darker: #1f2937;
-$darkest: #111827;
-$grey: #6b7280;
-$pink: #ec4899;
-$purple: #8b5cf6;
-$light: #eee;
-$green: #68dea0;
 $myFont_family: 'Indie Flower', cursive;
 $tablet_breakpont: 676px;
 $desktop_breakpoint: 1200px;
@@ -23,9 +14,6 @@ $white-lightness: 100%;
 $color-primary: hsl(132, 18%, 42);
 
 $color-primary_2: hsl(205, 53%, 92%);
-
-// background: hsl(270, 18%, 55%);
-// background: #8e73a4;
 
 $color-white: hsl(0, 5%, $white-lightness);
 $color-light: hsl($primary-hue, 5%, $light-lightness);

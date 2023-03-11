@@ -121,15 +121,15 @@ img {
 }
 
 .btn.primary {
-  background: v.$color-primary;
+  background: rgba(33, 104, 105, 0.58);
 
   color: white;
 }
 
 .btn.primary:hover {
   background: transparent;
-  border-color: v.$color-primary;
-  color: v.$color-primary;
+  border-color: rgba(33, 104, 105, 0.58);
+  color: rgba(33, 104, 105, 0.58);
 }
 
 .btn.sm {

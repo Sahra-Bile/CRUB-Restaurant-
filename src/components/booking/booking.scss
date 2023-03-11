@@ -1,0 +1,130 @@
+.big-container {
+  margin: 0 auto;
+  margin-top: 70px;
+  padding: 50px;
+  width: 100%;
+  height: min-content;
+
+  &__loadingDiv {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+
+    &:after {
+      content: ' ';
+      display: block;
+      width: 100px;
+      height: 100px;
+      margin: 8px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: Loading-animation 1.2s linear infinite;
+    }
+
+    &__step {
+      padding: 40px;
+
+      &__text {
+        text-align: center;
+        font-size: 1.5rem;
+        color: red;
+      }
+
+      &__form1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        &__container {
+          gap: 10px;
+          &__label {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  .calender-div {
+    width: 300px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    // width: 500px; table läge
+  }
+
+  .calender {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 10%;
+    border: 2px solid green;
+  }
+
+  input {
+    border: none;
+    padding: 7px;
+    width: min-content;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+  }
+
+  .error {
+    font-size: 1.5rem;
+    color: red;
+  }
+
+  .select {
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 2px;
+    font-family: sans-serif;
+    padding: 5px;
+  }
+
+  .info {
+    margin: 0 0 30px 0;
+
+    &__p {
+      font-size: 1.2rem;
+      text-align: left;
+      font-family: 'Courier New', Courier, monospace;
+    }
+  }
+
+  .serach {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    padding: 15px;
+  }
+
+  .book {
+    border-radius: 30%;
+    background-color: royalblue;
+    font-size: 1.3rem;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .form2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+@keyframes Loading-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

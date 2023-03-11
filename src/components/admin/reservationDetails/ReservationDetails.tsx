@@ -38,7 +38,7 @@ export const ReservationDetails = (props: IBookingProps) => {
             }}
           >
             {' '}
-            delete bokning
+            ta bort bokning
           </button>
         </div>
       </section>
