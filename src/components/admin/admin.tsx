@@ -1,6 +1,9 @@
-export const Admin = () => {
+import { Reservations } from './reservations/Reservations'
 
-    return (
-        <h1>Admin page</h1>
-    );
+export const Admin = () => {
+  return (
+    <>
+      <Reservations />
+    </>
+  )
 }

@@ -27,25 +27,19 @@ body {
 }
 
 /* GENERAL SECTION STYLES */
-section {
-  padding: 10rem 0;
-  background: v.$color-light;
-  transition: v.$transition;
-}
+// section {
+//   padding: 10rem 0;
+// }
 
-section:nth-child(even) {
-  background: v.$color-white;
-}
+// section > h2 {
+//   text-align: center;
+// }
 
-section > h2 {
-  text-align: center;
-}
-
-section > p {
-  text-align: center;
-  margin: 0.5rem auto 4rem;
-  width: 40%;
-}
+// section > p {
+//   text-align: center;
+//   margin: 0.5rem auto 4rem;
+//   width: 40%;
+// }
 
 /* GENERAL SECTION STYLES */
 a {
@@ -152,14 +146,10 @@ img {
     width: v.$container-width-md;
   }
 
-  section {
-    padding: 8rem 0;
-  }
-
-  section > p {
-    width: 72%;
-    margin-bottom: 3rem;
-  }
+  // section > p {
+  //   width: 72%;
+  //   margin-bottom: 3rem;
+  // }
 
   h1 {
     font-size: 2rem;
@@ -188,7 +178,7 @@ img {
     padding: 0.6rem 1.5rem;
   }
 
-  section > p {
-    width: v.$container-width-md;
-  }
+  // section > p {
+  //   width: v.$container-width-md;
+  // }
 }

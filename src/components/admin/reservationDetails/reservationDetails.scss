@@ -1,0 +1,36 @@
+@use '../../style/variables.scss' as v;
+.article {
+  // margin-top: 15%;
+  width: 100%;
+
+  &-title {
+    font-family: v.$title;
+    margin-top: 10%;
+    margin-bottom: 5%;
+  }
+
+  border: 1px solid green;
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2%;
+  height: 100%;
+
+  &__flex {
+    width: 100%;
+    &__items {
+      border: 10px solid blue;
+      gap: 2em;
+      width: 100%;
+      &__info {
+        padding: 2em;
+      }
+    }
+  }
+}
+
+.icons {
+  font-size: 4rem;
+}
