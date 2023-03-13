@@ -28,12 +28,20 @@ export const checkAvailableTables = async (
 
   for (let i = 0; i < response.length; i++) {
     //** */ får listan med totala bokingar
-    let databaseDate = new Date(response[i].date);
-    let inComingDate = new Date(date)
+    let databaseDate:any = new Date(response[i].date);
+    let inComingDate:any = new Date(date)
 
-    if (databaseDate.getTime() === inComingDate.getTime()) {
-       console.log(" vad är du?", inComingDate)
+    if (databaseDate.getDate() === inComingDate.getDate()) {
+
+      //Nollställer tiden till 00:00:00
+      databaseDate.setHours(0,0,0,0)
+      //toLocaleDateString() <- skriver bara datumet likt 2023-03-03, men kan inte appliceras på varken string eller number
+       console.log(" vad är du?", inComingDate.toLocaleDateString())
       //* kollat vilka som matchar önskat datum
+
+      let checkTables = numberOfGuests % 15 ;
+      // console.log ("ceil:",Math.ceil(checkTables));
+      // console.log("bord",checkTables);
 
        //* Kontroller  första Sittning  + 1:
        if (response[i].time === '12:00') {
