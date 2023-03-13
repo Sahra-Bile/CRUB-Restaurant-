@@ -6,8 +6,9 @@
     background-repeat: no-repeat;
     background-color: gray;
     background-position: center;
-    background-size: contain;
+    // background-size: contain;
     position: relative;
+    background-size: length(100%);
 
     
     &__container{
