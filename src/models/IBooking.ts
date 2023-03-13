@@ -1,16 +1,15 @@
-import { ICustomer } from './ICustomer';
 
-
-
+//* få en booking by id
 export interface IBooking {
-  id?: string;
-  date: Date;
-  sittingTime: number;
-  numberOfGuests: number;
-  clientId?: ICustomer;
+  _id: string,
+  date: string,
+  time: string,
+  numberOfGuests: number,
+  customerId: string
 }
 
 
+//* interface för att skapa en bokning
 export interface INewBooking{
   restaurantId: string,
   date: string;
@@ -24,51 +23,17 @@ export interface INewBooking{
   };
  };
 
-
-
-export const bookingsDefaultValue: INewBooking = {
-  restaurantId: '',
-  date: '',
-  time: '',
-  numberOfGuests: 0,
-  customer: {
-    name: '',
-    lastname: '',
-    email: '',
-    phone: ''
-  }
-};
-
-
-
-
-export const bookingsDefaultValues: IBooking = {
-  id: "",
-  date: new Date(),
-  sittingTime: 0,
-  numberOfGuests: 0,
-};
-
-
-
-
-
+ //* interface för att få en lista av all bokingar
  export interface IBookingsResponse{
-    _id: string
-    restaurantId: string,
+    find(arg0: (booking: any) => boolean): unknown;
+    _id: string;
+    restaurantId: string;
     date: string;
     time: string;
     numberOfGuests: number;
     customerId: string;
  };
 
-
-
-
-
-export interface IBookingsRespons {
-  data:IBooking;
-};
 
 
 

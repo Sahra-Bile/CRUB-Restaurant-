@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 
 import { checkAvailableTables, ISittings } from '../../services/conditional'
 import { Controller, useForm } from 'react-hook-form'
@@ -6,17 +6,18 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 
 import './booking.scss'
-import { BookingForm } from './BookingForm'
+import { createBooking } from '../../services/handleBookingsAxios'
 
 export const Booking = () => {
   const [step, setStep] = useState(1) //! kolla fas sökning
   const [isLoading, setIsLoading] = useState(false)
   const [isAvailable, setIsAvailable] = useState<ISittings>({
-    theFirstSitting: true,
+    theFirstSitting: false,
     theSecondSitting: false,
   })
   const [sitting, setSitting] = useState(0)
-  const [open, setOpen] = useState(false)
+  const [time, setTime] = useState('')
+  // const [numberOfGuests, setNumberOfGuests] = useState(0)
 
   //* handleSubmit är fron react useForm hook länk här
   //*https://react-hook-form.com/api/useform/handlesubmit/
@@ -29,22 +30,51 @@ export const Booking = () => {
     formState: { errors },
   } = useForm()
 
-  const [date, numberOfPeople] = watch(['date', 'numberOfPeople'])
-
+  const [date, numberOfGuests, name, lastname, email, phone] = watch([
+    'date',
+    'numberOfGuests',
+    'name',
+    'lastname',
+    'email',
+    'phone',
+  ])
+  //* e: FormEvent  e.preventDefault() går inte använda när man använder UseForm hooks
   //* Kontrollerar valt datum och sittning i Databasen
-  const HandleOnFirstSubmit = (data: any) => {
+  const HandleOnFirstSubmit = () => {
     setIsLoading(true)
     const checkAvailable = async () => {
       const isAvailableinDB = await checkAvailableTables(
-        false,
-        data.date,
-        data.numberOfPeople,
+        date.toLocaleDateString(),
+        numberOfGuests,
       )
       setIsAvailable(isAvailableinDB)
     }
     checkAvailable()
     setStep(2)
     setIsLoading(false) // borde vara false
+  }
+  //*  Genomför bokning
+  const HandleOnSecondSubmit = async () => {
+    let booking = {
+      restaurantId: '64089b0d76187b915f68e16f',
+      date: date.toLocaleDateString(),
+      time: time,
+      numberOfGuests: numberOfGuests,
+      customer: {
+        name: name,
+        lastname: lastname,
+        email: email,
+        phone: phone,
+        id: '',
+      },
+    }
+    setIsLoading(true)
+    createBooking(booking).then((resData) => {
+      console.log(resData)
+      setIsLoading(false)
+    })
+    console.log(' this is booking', booking)
+    console.log(' this is booking', booking.customer.id)
   }
 
   return (
@@ -80,11 +110,14 @@ export const Booking = () => {
                   {errors.date && <p className="error"> Välj ett datum</p>}
                   <label>Antal personer</label>
                   <select
+                    required
                     className="select"
-                    {...register('numberOfPeople', {
+                    // onChange={(e) => setNumberOfGuests(+e.target.value)}
+                    // {numberOfGuests < 0 ? <p>{numberOfGuests}</p> : <p>välj antal gäster</p>}
+                    {...register('numberOfGuests', {
                       required: true,
                       min: 1,
-                      max: 12,
+                      max: 7,
                     })}
                     defaultValue="0"
                   >
@@ -100,7 +133,7 @@ export const Booking = () => {
                     <option value="7">7</option>
                     <option value="7+">7+</option>
                   </select>
-                  {errors.numberOfPeople && (
+                  {errors.numberOfGuests && (
                     <span className="error">Välj antal personer!</span>
                   )}
                   <div className="info">
@@ -124,10 +157,10 @@ export const Booking = () => {
               <h2 className="Tillgängliga">Tillgängliga sittningar!</h2>
 
               <div>
-                <p className="serach">
+                <p className="search">
                   Din sökning: <br />
                   {date.toLocaleDateString()} <br />
-                  {numberOfPeople} personer
+                  {numberOfGuests} personer
                 </p>
               </div>
               <div>
@@ -137,12 +170,13 @@ export const Booking = () => {
                     onClick={() => {
                       setSitting(1)
                       setStep(3)
+                      setTime('12:00')
                     }}
                   >
                     Boka kl. 12:00
                   </button>
                 ) : (
-                  <p className="serach">
+                  <p className="search">
                     {' '}
                     Första sittningen är inte tillgänglig
                   </p>
@@ -154,26 +188,97 @@ export const Booking = () => {
                     onClick={() => {
                       setSitting(2)
                       setStep(3)
+                      setTime('19:00')
                     }}
                   >
                     Boka kl. 19.00
                   </button>
                 ) : (
-                  <span className="serach">
+                  <span className="search">
                     Andra sittningen är inte tillgängligt
                   </span>
                 )}
               </div>
+              <div>
+                <button className="btn primary" onClick={() => setStep(1)}>
+                  Börja om sökningen
+                </button>
+              </div>
             </>
           )}
-          <div>
-            <button className="btn primary" onClick={() => setStep(1)}>
-              Börja om sökningen
-            </button>
-          </div>
+          {step === 3 && (
+            <>
+              <h2>Din information</h2>
+              <div>
+                <p>
+                  Din sökning: <br />
+                  {date.toLocaleDateString()} <br />
+                  {sitting === 1 ? '12.00 ' : '19.00 '}
+                  <br />
+                  {numberOfGuests} personer
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit(HandleOnSecondSubmit)}>
+                <div>
+                  <label>Förnamn:</label>
+                  <input
+                    className="name"
+                    required
+                    {...register('name', {
+                      required: true,
+                      minLength: 1,
+                      maxLength: 30,
+                    })}
+                    type="text"
+                  />{' '}
+                  {errors.name && <p> Skriv ditt Förnamn &#11105;</p>}
+                  <label>Efternamn:</label>
+                  <input
+                    className="lastname"
+                    required
+                    {...register('lastname', {
+                      required: true,
+                      minLength: 1,
+                      maxLength: 30,
+                    })}
+                    type="text"
+                  />{' '}
+                  {errors.name && <p> Skriv ditt Efternamn &#11105;</p>}
+                  <label>E-post:</label>
+                  <input
+                    required
+                    className="email"
+                    value={email}
+                    {...register('email', {
+                      required: true,
+                    })}
+                    type="email"
+                  />
+                  {errors.email && <p> Skriv ditt e-post &#11105;</p>}
+                  <label>Telefonnummer:</label>
+                  <input
+                    type="number"
+                    value={phone}
+                    className="phone"
+                    required
+                    {...register('phone', {
+                      required: true,
+                      minLength: 10,
+                      maxLength: 12,
+                    })}
+                  />
+                  {errors.phone && <p> Skriv ditt telefon number &#11105;</p>}
+                  <button type="submit" value={'book'} className="btn primary">
+                    {' '}
+                    boka
+                  </button>
+                </div>
+              </form>
+            </>
+          )}
         </div>
       )}
-      <BookingForm setIsLoading={setIsLoading} step={step} sitting={sitting} />
     </section>
   )
 }

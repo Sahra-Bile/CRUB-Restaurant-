@@ -1,9 +1,12 @@
+import { useEffect, useState } from 'react'
 import { BsFillPeopleFill } from 'react-icons/bs'
 import { MdAccessTime, MdDateRange } from 'react-icons/md'
-import { useOutletContext } from 'react-router-dom'
+import { useOutletContext, useParams } from 'react-router-dom'
 import { IDeleteContext } from '../../../App'
 import { IBookingsResponse } from '../../../models/IBooking'
-import { IEditContext } from '../editBooking/EditBooking'
+import { ICustomer } from '../../../models/ICustomer'
+import { getCustomerById } from '../../../services/handleBookingsAxios'
+
 import './reservationDetails.scss'
 
 interface IBookingProps {
@@ -11,8 +14,25 @@ interface IBookingProps {
 }
 
 export const ReservationDetails = (props: IBookingProps) => {
+  const { bookingId } = useParams()
+  const [customer, setCustomer] = useState<ICustomer>()
   const { handleDeleteClick } = useOutletContext<IDeleteContext>()
-  const { HandleOnSubmit } = useOutletContext<IEditContext>()
+  // const booking = props.booking.find((booking) => booking.id === bookingId)
+
+  async function getCustomerInfo() {
+    let response = await getCustomerById(props.booking.customerId)
+    setCustomer(response.data[0])
+    return response.data
+  }
+
+  useEffect(() => {
+    getCustomerInfo()
+  })
+
+  console.log('customer', customer)
+  if (!props.booking) {
+    return <div>Booking not found</div>
+  }
 
   return (
     <>
@@ -31,6 +51,13 @@ export const ReservationDetails = (props: IBookingProps) => {
             <BsFillPeopleFill className="icons" />
             {props.booking.numberOfGuests}
           </p>
+
+          <div className="customerInfo">
+            <p>{customer?.lastname}</p>
+            <p>{customer?.email}</p>
+            <p>{customer?.phone}</p>
+          </div>
+
           <button
             className="btn primary"
             onClick={() => {

@@ -1,5 +1,8 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { IBookingsResponse } from '../../../models/IBooking'
+import { ICustomer } from '../../../models/ICustomer'
+
 import { getAllBookings } from '../../../services/handleBookingsAxios'
 import { ReservationDetails } from '../reservationDetails/ReservationDetails'
 
@@ -15,6 +18,7 @@ export const Reservations = () => {
 
     getData()
   })
+  console.log(' denna är längden av bokningslista', booking.length)
 
   let html = booking.map((reserve) => {
     return (

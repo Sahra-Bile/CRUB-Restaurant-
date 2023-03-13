@@ -24,6 +24,7 @@ function App() {
   }
 
   return (
+    // <BookingsContext.Provider value={bookings}>
     <main>
       <header>
         <NavBar></NavBar>
@@ -36,6 +37,7 @@ function App() {
       </footer>
       <FloatingNav />
     </main>
+    // </BookingsContext.Provider>
   )
 }
 

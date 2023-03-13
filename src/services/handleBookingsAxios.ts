@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { IBooking, IBookingsRespons, IBookingsResponse, INewBooking } from '../models/IBooking';
+import { IBooking, IBookingsResponse, INewBooking } from '../models/IBooking';
 
 
 // const body = JSON.stringify({ bookingsDefaultValue })
@@ -13,8 +13,9 @@ const url_1: string = 'https://school-restaurant-api.azurewebsites.net/booking/r
 const resturantId =  "64089b0d76187b915f68e16f";
 
 
+//* all bookings 
 
-export async function getAllBookings() {
+export const getAllBookings = async():Promise<IBookingsResponse[]>  =>{
 
   let response = await axios.get(url_1 +resturantId);
 
@@ -48,7 +49,7 @@ const url_3: string = 'https://school-restaurant-api.azurewebsites.net/booking/'
 
 
 
-export async function getBookingById (id: string):Promise<IBookingsRespons> {
+export async function getBookingById (id: string):Promise<IBookingsResponse> {
 
   let response = await axios.get(url_3 + id);
 
@@ -83,3 +84,11 @@ const url_5: string = 'https://school-restaurant-api.azurewebsites.net/booking/u
 
  }
 
+ let customUrl = 'https://school-restaurant-api.azurewebsites.net/customer/'
+
+
+ export const getCustomerById = async(id:string) =>{
+  let response = await axios.get(customUrl + id)
+
+  return response.data;
+ }
