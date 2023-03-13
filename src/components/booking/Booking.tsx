@@ -7,6 +7,8 @@ import 'react-calendar/dist/Calendar.css'
 
 import './booking.scss'
 import { createBooking } from '../../services/handleBookingsAxios'
+// import { ok } from 'assert'
+import { Link } from 'react-router-dom'
 
 export const Booking = () => {
   const [step, setStep] = useState(1) //! kolla fas sökning
@@ -47,6 +49,8 @@ export const Booking = () => {
         date.toLocaleDateString(),
         numberOfGuests,
       )
+      console.log('Available', isAvailableinDB)
+
       setIsAvailable(isAvailableinDB)
     }
     checkAvailable()
@@ -70,6 +74,9 @@ export const Booking = () => {
     }
     setIsLoading(true)
     createBooking(booking).then((resData) => {
+      alert('tack sharmuto för ditt hårda jobb!')
+      // if (resData) return <div>tack för din bokning</div>
+
       console.log(resData)
       setIsLoading(false)
     })
@@ -269,10 +276,12 @@ export const Booking = () => {
                     })}
                   />
                   {errors.phone && <p> Skriv ditt telefon number &#11105;</p>}
+                  {/* <Link to={'/'}> */}
                   <button type="submit" value={'book'} className="btn primary">
                     {' '}
                     boka
                   </button>
+                  {/* </Link> */}
                 </div>
               </form>
             </>
