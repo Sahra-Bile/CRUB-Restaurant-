@@ -1,6 +1,5 @@
 import { getAllBookings } from './handleBookingsAxios';
 
-
 export interface ISittings {
   theFirstSitting: boolean;
   theSecondSitting: boolean;
@@ -8,9 +7,7 @@ export interface ISittings {
 
 
 export const checkAvailableTables = async (
- 
-  // isTheSameSitting : boolean,
-  date: Date,
+ date: Date,
   numberOfGuests: number,
 ) => {
 
@@ -20,11 +17,9 @@ export const checkAvailableTables = async (
   };
 
   let response = await getAllBookings();
-  let tablesInRestaurant: number = 0;
-  let tablesInRestaurant2: number = 0;
-  // if (isTheSameSitting && numberOfGuests > 6) {
-  //   tablesInRestaurant = tablesInRestaurant - 1;
-  // }
+  let tablesAtLunch: number = 0;
+  let tablesAtDinner: number = 0;
+ 
 
   for (let i = 0; i < response.length; i++) {
     //** */ får listan med totala bokingar
@@ -33,77 +28,66 @@ export const checkAvailableTables = async (
 
     if (databaseDate.getDate() === inComingDate.getDate()) {
 
-      //Nollställer tiden till 00:00:00
-      databaseDate.setHours(0,0,0,0)
-      //toLocaleDateString() <- skriver bara datumet likt 2023-03-03, men kan inte appliceras på varken string eller number
-       console.log(" vad är du?", inComingDate.toLocaleDateString())
+    if (databaseDate.getTime() === inComingDate.getTime()) {
+      
+       console.log(" is?", inComingDate)
       //* kollat vilka som matchar önskat datum
 
-      let checkTables = numberOfGuests % 15 ;
-      // console.log ("ceil:",Math.ceil(checkTables));
-      // console.log("bord",checkTables);
-
-       //* Kontroller  första Sittning  + 1:
+  
+       //* Kontroller  första Sittning  1:
        if (response[i].time === '12:00') {
-        tablesInRestaurant = tablesInRestaurant + 1;
+        tablesAtLunch = tablesAtLunch + 1;
         if (response[i].numberOfGuests > 6) {
-          tablesInRestaurant = tablesInRestaurant + 1;
-        }
-
-        //*om användaren bokar för fler än 6 personer
-        if (numberOfGuests > 6) {
-          if (tablesInRestaurant >= 14) {
-            isAvailable.theFirstSitting = false;
-          } else {
-            isAvailable.theFirstSitting = true;
-          }
-          //*om användaren bokar för mindre än 6 personer
-        } else {
-          if (tablesInRestaurant >= 15) {
-            isAvailable.theFirstSitting = false;
-          } else {
-            isAvailable.theFirstSitting = true;
-          }
+          tablesAtLunch = tablesAtLunch + 1;
         }
       }
-
        //* Sittning 2
        if (response[i].time === '19:00') {
-        tablesInRestaurant2 = tablesInRestaurant2 + 1;
+        tablesAtDinner = tablesAtDinner + 1;
         if (response[i].numberOfGuests > 6) {
-          tablesInRestaurant2 = tablesInRestaurant2 + 1;
+          tablesAtDinner = tablesAtDinner + 1;
         }
-
-         //* om användaren bokar för fler än 6 personer
-         if (numberOfGuests > 6) {
-          if (tablesInRestaurant2 >= 14) {
-            isAvailable.theSecondSitting = false;
-          } else {
-            isAvailable.theSecondSitting = true;
-          }
-        }
-          //* om användaren bokar för mindre än 6 personer
-        } 
-        
-        // else 
-        // {
-        //   if (tablesInRestaurant >= 15) {
-        //     isAvailable.theFirstSitting = false;
-        //   } else {
-        //     isAvailable.theFirstSitting = true;
-        //   }
-        // }
       }
-    }
+         
+         
+  }
+  }
 
-     console.log(' denna är 1',isAvailable.theFirstSitting);
-     console.log("denna är 2",isAvailable.theSecondSitting);
+  console.log("Tables at lunch:", tablesAtLunch);
+  console.log("Tables at dinner:", tablesAtDinner);
+  
+  const numberOfTablesForCurrentBooking = Math.ceil(numberOfGuests / 6);
+
+        //*om användaren bokar för fler än 6 personer
+        if (tablesAtLunch + numberOfTablesForCurrentBooking <= 15) {
+          
+            isAvailable.theFirstSitting = true;
+          } else {
+            isAvailable.theFirstSitting = false;
+          }
+          
+          //*om användaren bokar för mindre än 6 personer
+      
+        if (tablesAtDinner + numberOfTablesForCurrentBooking <= 15) {
+         
+            isAvailable.theSecondSitting = true;
+          } else {
+            isAvailable.theSecondSitting = false;
+          }
+          //*om användaren bokar för mindre än 6 personer
+      
+
+
+        console.log(isAvailable)
+
     return isAvailable;
 
+   
   }
 
   
-  
+
+
 
 
 

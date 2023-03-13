@@ -19,20 +19,20 @@ export const ReservationDetails = (props: IBookingProps) => {
   const { handleDeleteClick } = useOutletContext<IDeleteContext>()
   // const booking = props.booking.find((booking) => booking.id === bookingId)
 
-  async function getCustomerInfo() {
-    let response = await getCustomerById(props.booking.customerId)
-    setCustomer(response.data[0])
-    return response.data
-  }
+  // async function getCustomerInfo() {
+  //   let response = await getCustomerById(props.booking.customerId)
+  //   setCustomer(response.data[0])
+  //   return response.data
+  // }
 
-  useEffect(() => {
-    getCustomerInfo()
-  })
+  // useEffect(() => {
+  //   getCustomerInfo()
+  // })
 
-  console.log('customer', customer)
-  if (!props.booking) {
-    return <div>Booking not found</div>
-  }
+  // console.log('customer', customer)
+  // if (!props.booking) {
+  //   return <div>Booking not found</div>
+  // }
 
   return (
     <>
@@ -40,7 +40,8 @@ export const ReservationDetails = (props: IBookingProps) => {
         <div className="article__flex__items">
           <p className="article__flex__items__info">
             {' '}
-            <MdDateRange className="icons" /> {props.booking.date}
+            <MdDateRange className="icons" />
+            {props.booking.date}
           </p>
           <p className="article__flex__items__info">
             {' '}
@@ -51,12 +52,12 @@ export const ReservationDetails = (props: IBookingProps) => {
             <BsFillPeopleFill className="icons" />
             {props.booking.numberOfGuests}
           </p>
-
+          {/* 
           <div className="customerInfo">
             <p>{customer?.lastname}</p>
             <p>{customer?.email}</p>
             <p>{customer?.phone}</p>
-          </div>
+          </div> */}
 
           <button
             className="btn primary"

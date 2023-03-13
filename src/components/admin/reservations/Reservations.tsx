@@ -1,7 +1,5 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { IBookingsResponse } from '../../../models/IBooking'
-import { ICustomer } from '../../../models/ICustomer'
 
 import { getAllBookings } from '../../../services/handleBookingsAxios'
 import { ReservationDetails } from '../reservationDetails/ReservationDetails'
@@ -15,7 +13,7 @@ export const Reservations = () => {
       setBooking(bookingFromDB)
     }
     if (booking.length > 0) return
-
+    // } else {
     getData()
   })
   console.log(' denna är längden av bokningslista', booking.length)
