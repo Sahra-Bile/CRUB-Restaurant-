@@ -1,0 +1,28 @@
+@use '../../style/variables.scss' as v;
+@use '../../style/mixins.scss' as m;
+.error{
+    height: 100vh;
+    background-image: url(https://images.unsplash.com/photo-1508935662753-629c6fae16e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80);
+    background-repeat: no-repeat;
+    background-color: gray;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+
+    
+    &__container{
+        background-color: rgba(118, 168, 206, 0.849);
+        position: absolute;
+        padding: 4em;
+        left: 38%;
+        top: 35%;
+        &__message{
+        font-size: 1.6em;
+        font-family: v.$regular;
+        color:rgb(28, 28, 57);
+        }
+       
+    }
+}
+
+//mobilversionen: https://images.unsplash.com/photo-1509047319667-c1a8de3000c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80
