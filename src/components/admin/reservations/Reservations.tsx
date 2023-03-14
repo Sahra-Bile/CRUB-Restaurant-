@@ -3,10 +3,14 @@ import { BsFillPeopleFill } from 'react-icons/bs'
 import { MdAccessTime, MdDateRange } from 'react-icons/md'
 
 import { IBookingsResponse } from '../../../models/IBooking'
-import { deleteBookingById } from '../../../services/handleBookingsAxios'
+import {
+  deleteBookingById,
+  getBookingById,
+} from '../../../services/handleBookingsAxios'
 import { toast } from 'react-toastify'
 import { AdminBookingsContext } from '../../../contexts/AdminBookingsContext'
 import './reservation.scss'
+import { Link } from 'react-router-dom'
 
 export const Reservation = () => {
   const [contextBookings, setContextBookings] = useState<IBookingsResponse[]>(
@@ -58,8 +62,16 @@ export const Reservation = () => {
           >
             ta bort
           </button>
-
-          <button>mer info</button>
+          <Link to={'/admin/details'}>
+            <button
+              onClick={() => {
+                getBookingById(reservation._id)
+              }}
+            >
+              {' '}
+              more info
+            </button>
+          </Link>
         </div>
       </>
     )

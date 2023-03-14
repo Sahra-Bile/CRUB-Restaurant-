@@ -7,6 +7,7 @@ import { Home } from './components/section/home/Home'
 import { NotFound } from './components/section/notFound/NotFound'
 import { Admin } from './components/admin/admin'
 import { Booking } from './components/booking/Booking'
+import { EditBooking } from './components/admin/editBooking/EditBooking'
 // import { ReservationDetails } from './components/admin/reservationDetails/ReservationDetails'
 
 export const router = createBrowserRouter([
@@ -37,10 +38,6 @@ export const router = createBrowserRouter([
         path: '/admin',
         element: <Admin />,
       },
-      // {
-      //   path: '/admin/details',
-      //   element: <ReservationDetails />,
-      // },
     ],
   },
 ])
