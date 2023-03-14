@@ -1,14 +1,11 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { useState } from 'react'
 
 import { checkAvailableTables, ISittings } from '../../services/conditional'
 import { Controller, useForm } from 'react-hook-form'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 
-import './booking.scss'
 import { createBooking } from '../../services/handleBookingsAxios'
-// import { ok } from 'assert'
-import { Link } from 'react-router-dom'
 
 export const Booking = () => {
   const [step, setStep] = useState(1) //! kolla fas sökning
@@ -19,10 +16,7 @@ export const Booking = () => {
   })
   const [sitting, setSitting] = useState(0)
   const [time, setTime] = useState('')
-  // const [numberOfGuests, setNumberOfGuests] = useState(0)
 
-  //* handleSubmit är fron react useForm hook länk här
-  //*https://react-hook-form.com/api/useform/handlesubmit/
   const {
     handleSubmit,
     control,
@@ -63,7 +57,7 @@ export const Booking = () => {
       restaurantId: '64089b0d76187b915f68e16f',
       date: date.toLocaleDateString(),
       time: time,
-      numberOfGuests: numberOfGuests,
+      numberOfGuests: Number(numberOfGuests),
       customer: {
         name: name,
         lastname: lastname,
@@ -75,7 +69,6 @@ export const Booking = () => {
     setIsLoading(true)
     createBooking(booking).then((resData) => {
       alert('tack sharmuto för ditt hårda jobb!')
-      // if (resData) return <div>tack för din bokning</div>
 
       console.log(resData)
       setIsLoading(false)
@@ -117,14 +110,11 @@ export const Booking = () => {
                   {errors.date && <p className="error"> Välj ett datum</p>}
                   <label>Antal personer</label>
                   <select
-                    required
                     className="select"
-                    // onChange={(e) => setNumberOfGuests(+e.target.value)}
-                    // {numberOfGuests < 0 ? <p>{numberOfGuests}</p> : <p>välj antal gäster</p>}
                     {...register('numberOfGuests', {
                       required: true,
                       min: 1,
-                      max: 7,
+                      max: 12,
                     })}
                     defaultValue="0"
                   >
@@ -138,7 +128,11 @@ export const Booking = () => {
                     <option value="5">5</option>
                     <option value="6">6</option>
                     <option value="7">7</option>
-                    <option value="7+">7+</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
                   </select>
                   {errors.numberOfGuests && (
                     <span className="error">Välj antal personer!</span>
@@ -202,7 +196,7 @@ export const Booking = () => {
                   </button>
                 ) : (
                   <span className="search">
-                    Andra sittningen är inte tillgängligt
+                    Andra sittningen är inte tillgänglig
                   </span>
                 )}
               </div>
@@ -276,12 +270,10 @@ export const Booking = () => {
                     })}
                   />
                   {errors.phone && <p> Skriv ditt telefon number &#11105;</p>}
-                  {/* <Link to={'/'}> */}
                   <button type="submit" value={'book'} className="btn primary">
                     {' '}
                     boka
                   </button>
-                  {/* </Link> */}
                 </div>
               </form>
             </>

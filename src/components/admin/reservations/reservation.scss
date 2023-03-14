@@ -1,0 +1,20 @@
+.big-container {
+  border: 1px solid green;
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2%;
+  height: 100%;
+
+  &__container {
+    border: 5px solid blue;
+    gap: 2em;
+    width: 60%;
+
+    &__icons {
+      font-size: 1.5rem;
+    }
+  }
+}

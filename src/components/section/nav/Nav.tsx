@@ -6,7 +6,7 @@ import './nav.scss'
 export const NavBar = () => {
   return (
     <nav className="nav">
-      <div className="container  nav__container">
+      <div className="  nav__container">
         <h1 className="nav__container__logo">CRUB.</h1>
         <ul className="nav__container__menu">
           {data.map((item) => (

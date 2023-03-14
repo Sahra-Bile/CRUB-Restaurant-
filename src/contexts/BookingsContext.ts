@@ -1,9 +1,10 @@
-import { createContext } from 'react';
+
+
 import { IBooking } from '../models/IBooking';
 
 
+ interface IBookingContext {
+  booking: IBooking;
+  
+}
 
-
-
-
-export const BookingsContext = createContext<IBooking[]>([])

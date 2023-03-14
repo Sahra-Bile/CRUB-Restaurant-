@@ -25,7 +25,7 @@ export interface INewBooking{
 
  //* interface för att få en lista av all bokingar
  export interface IBookingsResponse{
-    find(arg0: (booking: any) => boolean): unknown;
+    // find(arg0: (booking: any) => boolean): unknown;
     _id: string;
     restaurantId: string;
     date: string;

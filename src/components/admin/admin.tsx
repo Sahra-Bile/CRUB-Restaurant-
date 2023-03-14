@@ -1,9 +1,9 @@
-import { Reservations } from './reservations/Reservations'
+import { Reservation } from './reservations/Reservations'
 
 export const Admin = () => {
   return (
     <>
-      <Reservations />
+      <Reservation />
     </>
   )
 }

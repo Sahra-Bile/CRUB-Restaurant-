@@ -20,6 +20,7 @@
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-scrollspy": "^3.4.3",
+    "react-toastify": "^9.1.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
@@ -48,7 +49,6 @@
     ]
   },
   "devDependencies": {
-    "@types/react-scrollspy": "^3.3.5",
     "@types/react-calendar": "^3.9.0",
     "@types/react-scrollspy": "^3.3.5",
     "sass": "^1.58.3"
