@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+  height: 75px;
+}
+
+main {
+  height: calc(100% - 175px);
+}
+
+footer {
+  height: 100px;
+}
