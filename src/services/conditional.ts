@@ -76,7 +76,7 @@ export const checkAvailableTables = async (
           }
           //*om användaren bokar för mindre än 6 personer
       
-
+        }
 
         console.log(isAvailable)
 
@@ -84,10 +84,3 @@ export const checkAvailableTables = async (
 
    
   }
-
-  
-
-
-
-
-
