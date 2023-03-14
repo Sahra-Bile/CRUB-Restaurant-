@@ -7,6 +7,7 @@ import { Home } from './components/section/home/Home'
 import { NotFound } from './components/section/notFound/NotFound'
 import { Admin } from './components/admin/admin'
 import { Booking } from './components/booking/Booking'
+import { ReservationDetails } from './components/admin/reservationDetails/ReservationDetails'
 // import { ReservationDetails } from './components/admin/reservationDetails/ReservationDetails'
 
 export const router = createBrowserRouter([
@@ -31,11 +32,18 @@ export const router = createBrowserRouter([
       {
         path: '/booking',
         element: <Booking />,
+
       },
 
       {
         path: '/admin',
         element: <Admin />,
+        children: [
+          {
+            path: 'admin/:id',
+            element: <ReservationDetails />
+          }
+        ]
       },
       // {
       //   path: '/admin/details',

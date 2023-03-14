@@ -12,6 +12,7 @@ export interface IAdminBookingsContext {
   handleDeleteClick(id: string): void
 }
 
+
 function App() {
   const [bookings, setBookings] = useState<IBookingsResponse[]>([])
 
