@@ -4,9 +4,14 @@ import { MdAccessTime, MdDateRange } from 'react-icons/md'
 
 import { IBookingsResponse } from '../../../models/IBooking'
 import { deleteBookingById } from '../../../services/handleBookingsAxios'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 import { AdminBookingsContext } from '../../../contexts/AdminBookingsContext'
 import './reservation.scss'
+import { Link } from 'react-router-dom'
+import CustomerContext from '../../../contexts/CustomerContext'
+
+
+
 
 export const Reservation = () => {
   const [contextBookings, setContextBookings] = useState<IBookingsResponse[]>(
@@ -18,7 +23,7 @@ export const Reservation = () => {
     if (window.confirm('Är du säkert att du vill ta bort bokningen?')) {
       deleteBookingById(id)
         .then(() => {
-          toast('Bokningen är bort tagen.')
+          // toast('Bokningen är bort tagen.')
           window.location.reload()
         })
         .catch((err) => {
@@ -58,8 +63,10 @@ export const Reservation = () => {
           >
             ta bort
           </button>
+          <Link to={`/admin/${reservation._id}`}>
+            <button className='btn primary'>mer info</button>
+          </Link>
 
-          <button>mer info</button>
         </div>
       </>
     )
