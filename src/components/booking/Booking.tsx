@@ -1,14 +1,15 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
-
+import React, { useState } from 'react'
 import { checkAvailableTables, ISittings } from '../../services/conditional'
 import { Controller, useForm } from 'react-hook-form'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
-
-import './booking.scss'
 import { createBooking } from '../../services/handleBookingsAxios'
+<<<<<<< HEAD
 // import { ok } from 'assert'
 // import { Link } from 'react-router-dom'
+=======
+import './booking.scss'
+>>>>>>> feature-admin
 
 export const Booking = () => {
   const [step, setStep] = useState(1) //! kolla fas sökning
@@ -19,10 +20,7 @@ export const Booking = () => {
   })
   const [sitting, setSitting] = useState(0)
   const [time, setTime] = useState('')
-  // const [numberOfGuests, setNumberOfGuests] = useState(0)
 
-  //* handleSubmit är fron react useForm hook länk här
-  //*https://react-hook-form.com/api/useform/handlesubmit/
   const {
     handleSubmit,
     control,
@@ -40,10 +38,10 @@ export const Booking = () => {
     'email',
     'phone',
   ])
-  //* e: FormEvent  e.preventDefault() går inte använda när man använder UseForm hooks
-  //* Kontrollerar valt datum och sittning i Databasen
+
   const HandleOnFirstSubmit = () => {
     setIsLoading(true)
+
     const checkAvailable = async () => {
       const isAvailableinDB = await checkAvailableTables(
         date.toLocaleDateString(),
@@ -74,9 +72,6 @@ export const Booking = () => {
     }
     setIsLoading(true)
     createBooking(booking).then((resData) => {
-      alert('tack sharmuto för ditt hårda jobb!')
-      // if (resData) return <div>tack för din bokning</div>
-
       console.log(resData)
       setIsLoading(false)
     })
@@ -85,21 +80,21 @@ export const Booking = () => {
   }
 
   return (
-    <section className="container big-container">
+    <section className=" big-container">
       {isLoading ? (
-        <div className="big-container__loadingDiv"></div>
+        <div className="loadingDiv"></div>
       ) : (
-        <div className=" big-container__step">
+        <div className="big-container__step">
           {step === 1 && (
             <>
               <h2 className="big-container__step__text">Boka Bord</h2>
               <form
-                className=" big-container__step__form1"
+                className="big-container__step__form1"
                 onSubmit={handleSubmit(HandleOnFirstSubmit)}
               >
-                <div className="big-container__step__form1__container">
-                  <label className="label">Välj ett datum!</label>
-                  <div className="calender-div">
+                <div className="big-container__step__form1__container1">
+                  <label className="label">Välj ett datum:</label>
+                  <div className="big-container__step__form1__container1__calender-div">
                     <Controller
                       control={control}
                       name="date"
@@ -114,8 +109,8 @@ export const Booking = () => {
                       )}
                     />
                   </div>{' '}
-                  {errors.date && <p className="error"> Välj ett datum</p>}
-                  <label>Antal personer</label>
+                  {errors.date && <p className="error"> Välj ett datum:</p>}
+                  <label className="label">Antal personer</label>
                   <select
                     className="select"
                     {...register('numberOfGuests', {
@@ -142,13 +137,13 @@ export const Booking = () => {
                     <option value="12">12</option>
                   </select>
                   {errors.numberOfGuests && (
-                    <span className="error">Välj antal personer!</span>
+                    <span className="error">Välj antal personer:</span>
                   )}
                   <div className="info">
                     <p className="info__p">
                       Max per bord: 6 <br />
-                      Om bokningen gäller fler än sex personer kommer sällskapet
-                      att delas upp på flera bord.
+                      Om bokningen gäller fler än sex personer <br /> kommer
+                      sällskapet att delas upp på flera bord.
                     </p>
                   </div>
                   <input
@@ -162,7 +157,7 @@ export const Booking = () => {
           )}
           {step === 2 && (
             <>
-              <h2 className="Tillgängliga">Tillgängliga sittningar!</h2>
+              <h2 className="Tillgängliga">Tillgängliga sittningar:</h2>
 
               <div>
                 <p className="search">
@@ -203,7 +198,7 @@ export const Booking = () => {
                   </button>
                 ) : (
                   <span className="search">
-                    Andra sittningen är inte tillgängligt
+                    Andra sittningen är inte tillgänglig
                   </span>
                 )}
               </div>
@@ -216,8 +211,8 @@ export const Booking = () => {
           )}
           {step === 3 && (
             <>
-              <h2>Din information</h2>
-              <div>
+              <h2>Din information:</h2>
+              <div className="search">
                 <p>
                   Din sökning: <br />
                   {date.toLocaleDateString()} <br />
@@ -227,11 +222,14 @@ export const Booking = () => {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit(HandleOnSecondSubmit)}>
-                <div>
+              <form
+                className="form2"
+                onSubmit={handleSubmit(HandleOnSecondSubmit)}
+              >
+                <div className="form2__container2">
                   <label>Förnamn:</label>
                   <input
-                    className="name"
+                    className="form2__container2__input"
                     required
                     {...register('name', {
                       required: true,
@@ -240,10 +238,12 @@ export const Booking = () => {
                     })}
                     type="text"
                   />{' '}
-                  {errors.name && <p> Skriv ditt Förnamn &#11105;</p>}
+                  {errors.name && (
+                    <p className="error"> Skriv ditt Förnamn &#11105;</p>
+                  )}
                   <label>Efternamn:</label>
                   <input
-                    className="lastname"
+                    className="form2__container2__input"
                     required
                     {...register('lastname', {
                       required: true,
@@ -252,23 +252,27 @@ export const Booking = () => {
                     })}
                     type="text"
                   />{' '}
-                  {errors.name && <p> Skriv ditt Efternamn &#11105;</p>}
+                  {errors.name && (
+                    <p className="error"> Skriv ditt Efternamn &#11105;</p>
+                  )}
                   <label>E-post:</label>
                   <input
                     required
-                    className="email"
+                    className="form2__container2__input"
                     value={email}
                     {...register('email', {
                       required: true,
                     })}
                     type="email"
                   />
-                  {errors.email && <p> Skriv ditt e-post &#11105;</p>}
+                  {errors.email && (
+                    <p className="error"> Skriv ditt e-post &#11105;</p>
+                  )}
                   <label>Telefonnummer:</label>
                   <input
                     type="number"
                     value={phone}
-                    className="phone"
+                    className="form2__container2__input"
                     required
                     {...register('phone', {
                       required: true,
@@ -276,13 +280,17 @@ export const Booking = () => {
                       maxLength: 12,
                     })}
                   />
-                  {errors.phone && <p> Skriv ditt telefon number &#11105;</p>}
-                  {/* <Link to={'/'}> */}
-                  <button type="submit" value={'book'} className="btn primary">
+                  {errors.phone && (
+                    <p className="error"> Skriv ditt telefon number &#11105;</p>
+                  )}
+                  <button
+                    type="submit"
+                    value={'book'}
+                    className=" form2__container2__send "
+                  >
                     {' '}
-                    boka
+                    Boka
                   </button>
-                  {/* </Link> */}
                 </div>
               </form>
             </>

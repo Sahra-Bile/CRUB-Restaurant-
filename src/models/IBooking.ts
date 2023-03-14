@@ -1,10 +1,11 @@
 
 //* få en booking by id
 export interface IBooking {
-  _id: string,
-  date: string,
-  time: string,
-  numberOfGuests: number,
+  _id: string;
+  restaurantId:string;
+  date: string;
+  time: string;
+  numberOfGuests: number;
   customerId: string
 }
 
@@ -25,7 +26,6 @@ export interface INewBooking{
 
  //* interface för att få en lista av all bokingar
  export interface IBookingsResponse{
-    find(arg0: (booking: any) => boolean): unknown;
     _id: string;
     restaurantId: string;
     date: string;
@@ -34,6 +34,14 @@ export interface INewBooking{
     customerId: string;
  };
 
+ export const  bookingsDefaultValue: IBooking = {
+   _id: '',
+   restaurantId: '',
+   date:  '',
+   time: '',
+   numberOfGuests: 0,
+   customerId: ''
+ }
 
 
 

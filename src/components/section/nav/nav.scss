@@ -18,6 +18,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: v.$container-width-lg;
+    margin-inline: auto;
+    max-width: 1920px;
 
     &__logo {
       color: #fff;
