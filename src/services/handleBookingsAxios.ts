@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { IBooking, IBookingsResponse, INewBooking } from '../models/IBooking';
+import { IBooking, IBookingsResponse, IBookingUpdate, INewBooking } from '../models/IBooking';
 import { ICustomer } from '../models/ICustomer';
 
 
@@ -50,7 +50,7 @@ const url_3: string = 'https://school-restaurant-api.azurewebsites.net/booking/'
 
 
 
-export async function getBookingById (id: string):Promise<IBookingsResponse> {
+export async function getBookingById (id: string):Promise<IBooking[]> {
 
   let response = await axios.get(url_3 + id);
 
@@ -79,8 +79,8 @@ const url_4: string = 'https://school-restaurant-api.azurewebsites.net/booking/d
 const url_5: string = 'https://school-restaurant-api.azurewebsites.net/booking/update/';
 
 
- export const editBookingById = async(id:string, booking: IBooking): Promise<IBookingsResponse> =>{
- let response = await axios.put(url_5 , booking + id)
+ export const editBookingById = async(id:string, booking: IBookingUpdate): Promise<IBookingsResponse> =>{
+ let response = await axios.put(url_5 + id, booking)
  return response.data;
 
  }

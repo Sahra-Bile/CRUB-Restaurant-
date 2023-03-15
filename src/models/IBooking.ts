@@ -9,6 +9,15 @@ export interface IBooking {
   customerId: string
 }
 
+export interface IBookingUpdate {
+  id: string;
+  restaurantId:string;
+  date: string;
+  time: string;
+  numberOfGuests: number;
+  customerId: string;
+}
+
 
 //* interface för att skapa en bokning
 export interface INewBooking{
@@ -34,11 +43,11 @@ export interface INewBooking{
     customerId: string;
  };
 
- export const  bookingsDefaultValue: IBooking = {
+ export const  bookingsDefaultValue: IBookingsResponse = {
    _id: '',
-   restaurantId: '',
-   date:  '',
-   time: '',
+   restaurantId: "64089b0d76187b915f68e16f",
+   date:  '2023-03-20',
+   time: '19:00',
    numberOfGuests: 0,
    customerId: ''
  }

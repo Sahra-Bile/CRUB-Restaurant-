@@ -8,7 +8,7 @@ import { NotFound } from './components/section/notFound/NotFound'
 import { Admin } from './components/admin/admin'
 import { Booking } from './components/booking/Booking'
 import { ReservationDetails } from './components/admin/reservationDetails/ReservationDetails'
-// import { ReservationDetails } from './components/admin/reservationDetails/ReservationDetails'
+import { EditBooking } from './components/admin/editBooking/EditBooking'
 
 export const router = createBrowserRouter([
   {
@@ -32,22 +32,21 @@ export const router = createBrowserRouter([
       {
         path: '/booking',
         element: <Booking />,
-
       },
 
       {
         path: '/admin',
         element: <Admin />,
-
       },
       {
         path: 'bookingdetails/:id',
-        element: <ReservationDetails />
-      }
-      // {
-      //   path: '/admin/details',
-      //   element: <ReservationDetails />,
-      // },
+        element: <ReservationDetails />,
+      },
+
+      {
+        path: 'edit/:id',
+        element: <EditBooking />,
+      },
     ],
   },
 ])
