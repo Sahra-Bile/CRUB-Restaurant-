@@ -1,4 +1,4 @@
-@use '../style/variables.scss' as v;
+@use "../style/variables.scss" as v;
 @use "../style/mixins.scss" as m;
 
 .big-container {
@@ -12,7 +12,7 @@
     height: 100px;
 
     &:after {
-      content: ' ';
+      content: " ";
       display: block;
       width: 100px;
       height: 100px;
@@ -106,7 +106,7 @@
       &__p {
         font-size: 1rem;
         text-align: center;
-        font-family: 'Courier New', Courier, monospace;
+        font-family: "Courier New", Courier, monospace;
         color: #fff;
 
         @include m.desktop {
@@ -116,7 +116,7 @@
     }
 
     .search {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: "Courier New", Courier, monospace;
       font-size: 1.5rem;
       padding: 15px;
     }
@@ -127,7 +127,7 @@
       border-radius: 30%;
       background-color: rgb(182, 139, 139);
       font-size: 1.3rem;
-      font-family: 'Courier New', Courier, monospace;
+      font-family: "Courier New", Courier, monospace;
     }
 
     @keyframes Loading-animation {
@@ -156,7 +156,7 @@
 
     //*andra
     .lds-dual-ring:after {
-      content: ' ';
+      content: " ";
       display: block;
       width: 64px;
       height: 64px;
@@ -216,6 +216,17 @@
           width: 250px;
           @include m.desktop {
             width: 350px;
+          }
+
+          &__gdprContainer {
+            &__consent {
+              color: white;
+            }
+
+            &__check {
+              width: 20px;
+              height: 20px;
+            }
           }
         }
 
