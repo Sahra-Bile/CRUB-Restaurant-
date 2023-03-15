@@ -41,37 +41,37 @@
       color: v.$olive;
     }
 
-    &__form1 {
-      background: rgba(33, 104, 105, 0.58);
-      max-width: 1200px;
-      width: 90%;
-      margin: 17vh auto 0 auto;
-      padding: 40px;
-      margin-bottom: 40px;
-      margin-top: 30px;
-      border-radius: 3px;
-      box-sizing: border-box;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      &__container1 {
-        display: flex;
+      &__form1 {
+        background: rgba(33, 104, 105, 0.58);
+        max-width: 1200px;
+        width: 90%;
+        margin: 17vh auto 0 auto;
+        padding: 40px;
+        margin-bottom: 40px;
+        margin-top: 30px;
+        border-radius: 3px;
+        box-sizing: border-box;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        gap: 10px;
+        justify-content: center;
 
-       
-        &__calender-div {
-          width: 300px;
+        &__container1 {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
 
-          @include m.tablet {
-            width: none;
+        
+          &__calender-div {
+            width: 300px;
+
+            @include m.tablet {
+              width: none;
+            }
           }
         }
       }
-    }
     .calender {
       font-size: 1rem;
       padding: 15px;

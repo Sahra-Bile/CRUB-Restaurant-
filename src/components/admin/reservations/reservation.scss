@@ -1,5 +1,14 @@
+@use '../../style/variables.scss' as v;
+@use '../../style/mixins.scss' as m;
+
+.title{
+  font-size: v.$titlesize;
+  font-family: v.$title;
+  color: v.$dark-title;
+}
+
 .big-container {
-  border: 1px solid green;
+  
   display: flex;
   gap: 1em;
   flex-direction: row;
@@ -7,14 +16,24 @@
   justify-content: center;
   gap: 2%;
   height: 100%;
+  padding-top: 6rem;
 
   &__container {
-    border: 5px solid blue;
-    gap: 2em;
-    width: 60%;
+    margin-bottom: 4%;
+    padding: 4%;
+    width: 45%;
+    background-color: v.$grey-bg;
+    border-radius: 10px;
+    @include m.tablet{
+      width: 30%;
+    }
+    @include m.desktop{
+      width: 22%;
+    }
 
     &__icons {
       font-size: 1.5rem;
+      color: v.$olive;
     }
   }
 }

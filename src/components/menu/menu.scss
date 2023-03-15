@@ -4,6 +4,8 @@
 
     &__title{
         font-family: v.$title;
+        font-size: v.$titlesize;
+        color: v.$dark-title;
     }
     &__article{
         margin: 2em;
@@ -12,12 +14,14 @@
         &__title{
             font-family: v.$title;
             margin: 1em;
-            
+            color: v.$olive;
         }
         &__name{
             font-family: v.$title;
             margin-top: 1em;
             margin-bottom: 0.6em;
+            color: v.$dark-title;
+            font-size: v.$regularsize;
         }
         &__is{
             font-family: v.$regular;

@@ -12,12 +12,14 @@
 
 html {
   scroll-behavior: smooth;
+
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.6;
   font-size: 0.9rem;
+  background-color: v.$grey-bg;
 }
 
 //  GENERAL CONTAINER CLASS
@@ -27,8 +29,9 @@ body {
   max-width: 1920px;
 }
 
-GENERAL SECTION STYLES section {
-  padding: 10rem 0;
+//GENERAL SECTION STYLES 
+section {
+  padding: 5rem 0;
 }
 
 section > h2 {

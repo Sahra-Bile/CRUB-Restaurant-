@@ -47,19 +47,17 @@ export const Reservation = () => {
   let html = contextBookings.map((reservation) => {
     return (
       <>
+
         <div className="big-container__container" key={reservation._id}>
           <p className="big-container__container__icons">
-            <MdDateRange /> {reservation.date}
-          </p>
+            <MdDateRange /></p>
+          <span className="big-container__container__info"> {reservation.date}</span>
           <p className="big-container__container__icons">
-            {' '}
-            <MdAccessTime />
-            {reservation.time}
-          </p>
+            <MdAccessTime /> </p>
+          <span className="big-container__container__info">{reservation.time}</span>
           <p className="big-container__container__icons">
-            <BsFillPeopleFill />
-            {reservation.numberOfGuests}
-          </p>
+            <BsFillPeopleFill /></p>
+          <span className="big-container__container__info">{reservation.numberOfGuests}</span>
 
           <button
             className="btn primary"
@@ -70,7 +68,7 @@ export const Reservation = () => {
             ta bort
           </button>
           <Link to={`/bookingdetails/${reservation.customerId}`}>
-            <button className='btn primary'>mer info</button>
+            <button className='btn primary '>mer info</button>
           </Link>
 
         </div>
@@ -79,8 +77,12 @@ export const Reservation = () => {
   })
 
   return (
-    <div className="big-container">
-      <>{html}</>
-    </div>
+    <section>
+      <h1 className='title'>Bokningsöversikt</h1>
+      <div className="big-container">
+
+        <>{html}</>
+      </div>
+    </section>
   )
 }
