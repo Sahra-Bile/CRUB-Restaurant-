@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Calendar from 'react-calendar'
 import { Controller, FieldValues, useForm } from 'react-hook-form'
 import { Link, useParams } from 'react-router-dom'
+
 import {
   bookingsDefaultValue,
   IBookingsResponse,
@@ -34,7 +35,8 @@ export const EditBooking = () => {
     formState: { errors },
   } = useForm()
 
-  //* steg 1 hämta booking
+  //* steg 1 hämta booking by id
+
   useEffect(() => {
     const getData = async () => {
       if (id) {
@@ -49,7 +51,7 @@ export const EditBooking = () => {
     if (existingBooking._id !== '') return
 
     getData()
-  }, [])
+  }, [existingBooking._id, id])
 
   //* steg 2 sätter defaultvärde i formuläret enligt existerande bokning
 
@@ -69,7 +71,7 @@ export const EditBooking = () => {
     setIsLoading(false)
   }, [existingBooking, reset])
 
-  //*  steg 3 Sparar ny bokning med eventuella ändringar
+  //*  steg 3 Sparar nya  bokning med eventuella ändringar
 
   const onSubmit = async (data: FieldValues) => {
     setIsLoading(true)
@@ -96,12 +98,12 @@ export const EditBooking = () => {
         if (id)
           await editBookingById(id, newBooking)
             .then(() => {
-              //gör en klick här
-              console.log('updatering lyckades')
+              alert('uppdatatering lyckades.')
+
+              window.location.href = '/admin'
             })
-            .catch((e) => {
-              console.log('booking har uppdaterat', newBooking)
-              console.log(e)
+            .catch((err) => {
+              console.log(err.message)
             })
       } else {
         setIsAvailable(isAvailableinDB)

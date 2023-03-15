@@ -1,26 +1,22 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-
-import { checkAvailableTables, ISittings } from "../../services/conditional";
-import { Controller, useForm } from "react-hook-form";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
-
-import "./booking.scss";
-import { createBooking } from "../../services/handleBookingsAxios";
-// import { ok } from 'assert'
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from 'react'
+import { checkAvailableTables, ISittings } from '../../services/conditional'
+import { Controller, useForm } from 'react-hook-form'
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'
+import './booking.scss'
+import { createBooking } from '../../services/handleBookingsAxios'
+import { useNavigate } from 'react-router-dom'
 
 export const Booking = () => {
-  const [step, setStep] = useState(1); //! kolla fas sökning
-  const [isLoading, setIsLoading] = useState(false);
+  const [step, setStep] = useState(1) //! kolla fas sökning
+  const [isLoading, setIsLoading] = useState(false)
   const [isAvailable, setIsAvailable] = useState<ISittings>({
     theFirstSitting: false,
     theSecondSitting: false,
-  });
-  const [sitting, setSitting] = useState(0);
-  const [time, setTime] = useState("");
-  const navigate = useNavigate();
-  // const [numberOfGuests, setNumberOfGuests] = useState(0)
+  })
+  const [sitting, setSitting] = useState(0)
+  const [time, setTime] = useState('')
+  const navigate = useNavigate()
 
   const {
     handleSubmit,
@@ -29,37 +25,36 @@ export const Booking = () => {
     register,
 
     formState: { errors },
-  } = useForm();
+  } = useForm()
 
   const [date, numberOfGuests, name, lastname, email, phone] = watch([
-    "date",
-    "numberOfGuests",
-    "name",
-    "lastname",
-    "email",
-    "phone",
-  ]);
-  //* e: FormEvent  e.preventDefault() går inte använda när man använder UseForm hooks
-  //* Kontrollerar valt datum och sittning i Databasen
+    'date',
+    'numberOfGuests',
+    'name',
+    'lastname',
+    'email',
+    'phone',
+  ])
+
   const HandleOnFirstSubmit = () => {
-    setIsLoading(true);
+    setIsLoading(true)
     const checkAvailable = async () => {
       const isAvailableinDB = await checkAvailableTables(
         date.toLocaleDateString(),
-        numberOfGuests
-      );
-      console.log("Available", isAvailableinDB);
+        numberOfGuests,
+      )
+      console.log('Available', isAvailableinDB)
 
-      setIsAvailable(isAvailableinDB);
-    };
-    checkAvailable();
-    setStep(2);
-    setIsLoading(false); // borde vara false
-  };
+      setIsAvailable(isAvailableinDB)
+    }
+    checkAvailable()
+    setStep(2)
+    setIsLoading(false)
+  }
   //*  Genomför bokning
   const HandleOnSecondSubmit = async () => {
     let booking = {
-      restaurantId: "64089b0d76187b915f68e16f",
+      restaurantId: '64089b0d76187b915f68e16f',
       date: date.toLocaleDateString(),
       time: time,
       numberOfGuests: Number(numberOfGuests),
@@ -69,19 +64,19 @@ export const Booking = () => {
         email: email,
         phone: phone,
       },
-    };
+    }
 
-    setIsLoading(true);
+    setIsLoading(true)
 
     createBooking(booking).then((resData) => {
-      setIsLoading(false);
-      console.log("Detta är det vi får tillbaka", resData);
+      setIsLoading(false)
+      console.log('Detta är det vi får tillbaka', resData)
 
-      navigate("/booking/thankyou/" + resData.insertedId);
-    });
+      navigate('/booking/thankyou/' + resData.insertedId)
+    })
 
-    console.log(booking);
-  };
+    console.log(booking)
+  }
 
   return (
     <section className=" big-container">
@@ -94,7 +89,8 @@ export const Booking = () => {
               <h2 className="big-container__step__text">Boka bord</h2>
               <form
                 className="big-container__step__form1"
-                onSubmit={handleSubmit(HandleOnFirstSubmit)}>
+                onSubmit={handleSubmit(HandleOnFirstSubmit)}
+              >
                 <div className="big-container__step__form1__container1">
                   <label className="label">Välj ett datum:</label>
                   <div className="big-container__step__form1__container1__calender-div">
@@ -107,7 +103,7 @@ export const Booking = () => {
                           className="calender"
                           onChange={onChange}
                           minDate={new Date()}
-                          maxDate={new Date("2023-12-31")}
+                          maxDate={new Date('2023-12-31')}
                         />
                       )}
                     />
@@ -116,7 +112,7 @@ export const Booking = () => {
                   <label className="label">Antal personer</label>
                   <select
                     className="select"
-                    {...register("numberOfGuests", {
+                    {...register('numberOfGuests', {
                       required: true,
                       min: 1,
                       max: 12,
@@ -151,13 +147,14 @@ export const Booking = () => {
                   </div>
                   <input
                     type="submit"
-                    value={"Kontrollera tillgänglighet"}
+                    value={'Kontrollera tillgänglighet'}
                     className=" btn primary"
                   />
                 </div>
               </form>
             </>
           )}
+
           {step === 2 && (
             <>
               <h2 className="label">Tillgängliga sittningar:</h2>
@@ -173,9 +170,9 @@ export const Booking = () => {
                   <button
                     className="book btn primary"
                     onClick={() => {
-                      setSitting(1);
-                      setStep(3);
-                      setTime("12:00");
+                      setSitting(1)
+                      setStep(3)
+                      setTime('12:00')
                     }}
                   >
                     Boka kl. 12:00
@@ -190,9 +187,9 @@ export const Booking = () => {
                   <button
                     className="book btn primary"
                     onClick={() => {
-                      setSitting(2);
-                      setStep(3);
-                      setTime("19:00");
+                      setSitting(2)
+                      setStep(3)
+                      setTime('19:00')
                     }}
                   >
                     Boka kl. 19.00
@@ -212,49 +209,55 @@ export const Booking = () => {
           )}
           {step === 3 && (
             <>
-              <h2 className='label'>Din sökning gäller:</h2>
+              <h2 className="label">Din sökning gäller:</h2>
               <div className="result">
                 <p>
                   {date.toLocaleDateString()} <br />
-                  {sitting === 1 ? "12.00 " : "19.00 "}
+                  {sitting === 1 ? '12.00 ' : '19.00 '}
                   <br />
                   {numberOfGuests} personer
                 </p>
               </div>
-              <h2 className='label'>Din information:</h2>
+              <h2 className="label">Din information:</h2>
               <form
                 className="form2"
-                onSubmit={handleSubmit(HandleOnSecondSubmit)}>
+                onSubmit={handleSubmit(HandleOnSecondSubmit)}
+              >
                 <div className="form2__container2">
-                  <input placeholder='Förnamn'
+                  <input
+                    placeholder="Förnamn"
                     className="form2__container2__input"
                     required
-                    {...register("name", {
+                    {...register('name', {
                       required: true,
                       minLength: 1,
                       maxLength: 30,
                     })}
-                    type="text" />
+                    type="text"
+                  />
                   {errors.name && (
                     <p className="error"> Skriv ditt Förnamn &#11105;</p>
                   )}
-                  <input placeholder='Efternamn'
+                  <input
+                    placeholder="Efternamn"
                     className="form2__container2__input"
                     required
-                    {...register("lastname", {
+                    {...register('lastname', {
                       required: true,
                       minLength: 1,
                       maxLength: 30,
                     })}
-                    type="text" />
+                    type="text"
+                  />
                   {errors.name && (
                     <p className="error"> Skriv ditt Efternamn &#11105;</p>
                   )}
-                  <input placeholder='E-mailadress'
+                  <input
+                    placeholder="E-mailadress"
                     required
                     className="form2__container2__input"
                     value={email}
-                    {...register("email", {
+                    {...register('email', {
                       required: true,
                     })}
                     type="email"
@@ -262,12 +265,13 @@ export const Booking = () => {
                   {errors.email && (
                     <p className="error"> Skriv ditt e-post &#11105;</p>
                   )}
-                  <input placeholder='Telefonnummer'
+                  <input
+                    placeholder="Telefonnummer"
                     type="number"
                     value={phone}
                     className="form2__container2__input"
                     required
-                    {...register("phone", {
+                    {...register('phone', {
                       required: true,
                       minLength: 10,
                       maxLength: 12,
@@ -290,7 +294,8 @@ export const Booking = () => {
                   <button
                     type="submit"
                     value={'book'}
-                    className=" form2__container2__send ">
+                    className=" form2__container2__send "
+                  >
                     Boka
                   </button>
                 </div>
@@ -300,5 +305,5 @@ export const Booking = () => {
         </div>
       )}
     </section>
-  );
-};
+  )
+}

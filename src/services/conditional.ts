@@ -1,3 +1,4 @@
+
 import { getAllBookings } from './handleBookingsAxios';
 
 export interface ISittings {
@@ -22,15 +23,17 @@ export const checkAvailableTables = async (
  
 
   for (let i = 0; i < response.length; i++) {
+
     //** */ får listan med totala bokingar
-    let databaseDate:any = new Date(response[i].date);
-    let inComingDate:any = new Date(date)
+
+    let databaseDate = new Date(response[i].date);
+    let inComingDate  = new Date(date)
 
     if (databaseDate.getDate() === inComingDate.getDate()) {
 
     if (databaseDate.getTime() === inComingDate.getTime()) {
       
-       console.log(" is?", inComingDate)
+       
       //* kollat vilka som matchar önskat datum
 
   
@@ -78,8 +81,12 @@ export const checkAvailableTables = async (
       
         }
 
-        // console.log(isAvailable)
+         if(tablesAtLunch || tablesAtDinner === 14){
+          alert('vi har ett bord kvar att boka för 6 personer')
 
+         }
+
+       
     return isAvailable;
 
    
