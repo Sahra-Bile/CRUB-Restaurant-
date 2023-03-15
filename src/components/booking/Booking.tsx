@@ -50,6 +50,7 @@ export const Booking = () => {
     setStep(2)
     setIsLoading(false) // borde vara false
   }
+
   //*  Genomför bokning
   const HandleOnSecondSubmit = async () => {
     let booking = {
@@ -85,8 +86,7 @@ export const Booking = () => {
               <h2 className="big-container__step__text">Boka bord</h2>
               <form
                 className="big-container__step__form1"
-                onSubmit={handleSubmit(HandleOnFirstSubmit)}
-              >
+                onSubmit={handleSubmit(HandleOnFirstSubmit)}>
                 <div className="big-container__step__form1__container1">
                   <label className="label">Välj ett datum:</label>
                   <div className="big-container__step__form1__container1__calender-div">
@@ -103,7 +103,7 @@ export const Booking = () => {
                         />
                       )}
                     />
-                  </div>{' '}
+                  </div>
                   {errors.date && <p className="error"> Välj ett datum:</p>}
                   <label className="label">Antal personer</label>
                   <select
@@ -152,10 +152,9 @@ export const Booking = () => {
           )}
           {step === 2 && (
             <>
-              <h2 className="Tillgängliga">Tillgängliga sittningar:</h2>
-
+              <h2 className="label">Tillgängliga sittningar:</h2>
               <div>
-                <p className="search">
+                <p className="result">
                   Din sökning: <br />
                   {date.toLocaleDateString()} <br />
                   {numberOfGuests} personer
@@ -169,13 +168,11 @@ export const Booking = () => {
                       setSitting(1)
                       setStep(3)
                       setTime('12:00')
-                    }}
-                  >
+                    }}>
                     Boka kl. 12:00
                   </button>
                 ) : (
-                  <p className="search">
-                    {' '}
+                  <p className="result">
                     Första sittningen är inte tillgänglig
                   </p>
                 )}
@@ -187,12 +184,11 @@ export const Booking = () => {
                       setSitting(2)
                       setStep(3)
                       setTime('19:00')
-                    }}
-                  >
+                    }}>
                     Boka kl. 19.00
                   </button>
                 ) : (
-                  <span className="search">
+                  <span className="result">
                     Andra sittningen är inte tillgänglig
                   </span>
                 )}
@@ -206,24 +202,21 @@ export const Booking = () => {
           )}
           {step === 3 && (
             <>
-              <h2>Din information:</h2>
-              <div className="search">
+              <h2 className='label'>Din sökning gäller:</h2>
+              <div className="result">
                 <p>
-                  Din sökning: <br />
                   {date.toLocaleDateString()} <br />
                   {sitting === 1 ? '12.00 ' : '19.00 '}
                   <br />
                   {numberOfGuests} personer
                 </p>
               </div>
-
+              <h2 className='label'>Din information:</h2>
               <form
                 className="form2"
-                onSubmit={handleSubmit(HandleOnSecondSubmit)}
-              >
+                onSubmit={handleSubmit(HandleOnSecondSubmit)}>
                 <div className="form2__container2">
-                  <label>Förnamn:</label>
-                  <input
+                  <input placeholder='Förnamn'
                     className="form2__container2__input"
                     required
                     {...register('name', {
@@ -231,13 +224,11 @@ export const Booking = () => {
                       minLength: 1,
                       maxLength: 30,
                     })}
-                    type="text"
-                  />{' '}
+                    type="text" />
                   {errors.name && (
                     <p className="error"> Skriv ditt Förnamn &#11105;</p>
                   )}
-                  <label>Efternamn:</label>
-                  <input
+                  <input placeholder='Efternamn'
                     className="form2__container2__input"
                     required
                     {...register('lastname', {
@@ -245,13 +236,11 @@ export const Booking = () => {
                       minLength: 1,
                       maxLength: 30,
                     })}
-                    type="text"
-                  />{' '}
+                    type="text" />
                   {errors.name && (
                     <p className="error"> Skriv ditt Efternamn &#11105;</p>
                   )}
-                  <label>E-post:</label>
-                  <input
+                  <input placeholder='E-mailadress'
                     required
                     className="form2__container2__input"
                     value={email}
@@ -263,8 +252,7 @@ export const Booking = () => {
                   {errors.email && (
                     <p className="error"> Skriv ditt e-post &#11105;</p>
                   )}
-                  <label>Telefonnummer:</label>
-                  <input
+                  <input placeholder='Telefonnummer'
                     type="number"
                     value={phone}
                     className="form2__container2__input"
@@ -281,9 +269,7 @@ export const Booking = () => {
                   <button
                     type="submit"
                     value={'book'}
-                    className=" form2__container2__send "
-                  >
-                    {' '}
+                    className=" form2__container2__send ">
                     Boka
                   </button>
                 </div>

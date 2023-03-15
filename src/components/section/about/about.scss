@@ -2,10 +2,11 @@
 @use '../../style/mixins.scss' as m;
 
 .about-container {
+ 
   &__article {
     margin: 1em;
-
     padding: 3em;
+    
     &__title {
       font-family: v.$title;
       color: v.$olive;
@@ -15,11 +16,12 @@
     }
   }
   &__img {
-    width: 70%;
+    width: 100%;
   }
 
   @include m.tablet {
     position: relative;
+    padding-bottom: 5em;
     &__article {
       position: absolute;
       width: 50%;
