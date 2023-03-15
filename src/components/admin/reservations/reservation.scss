@@ -39,18 +39,16 @@
       font-size: v.$regularsize;
       color: v.$dark-title;
       padding: 0.4;
+      width: 170px;
       
       #delete{
         background-color: #D27685;
-        width: 170px;
       }
       #inspect{
       background-color: rgba(33, 104, 105, 0.58);
-      width: 170px;
       }
       #edit{
         background-color: #FDD36A;
-        width: 170px
       }
     }
     
@@ -71,4 +69,3 @@
     }
   }
 }
-
