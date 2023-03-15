@@ -4,12 +4,7 @@ import { Controller, useForm } from 'react-hook-form'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { createBooking } from '../../services/handleBookingsAxios'
-<<<<<<< HEAD
-// import { ok } from 'assert'
-// import { Link } from 'react-router-dom'
-=======
 import './booking.scss'
->>>>>>> feature-admin
 
 export const Booking = () => {
   const [step, setStep] = useState(1) //! kolla fas sökning
