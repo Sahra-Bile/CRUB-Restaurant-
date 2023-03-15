@@ -13,7 +13,7 @@
     align-items: center;
     width: 100%;
     text-align: center;
-    color: white;
+    color: v.$offwhite;
 
     @include m.tablet {
       display: flex;
