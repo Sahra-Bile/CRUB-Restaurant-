@@ -78,7 +78,7 @@ export const checkAvailableTables = async (
       
         }
 
-        console.log(isAvailable)
+        // console.log(isAvailable)
 
     return isAvailable;
 

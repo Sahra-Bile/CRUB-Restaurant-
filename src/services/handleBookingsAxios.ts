@@ -3,7 +3,7 @@ import {
   IBooking,
   IBookingCreated,
   IBookingsResponse,
-  INewBooking,
+  IBookingUpdate, INewBooking,
 } from "../models/IBooking";
 import { ICustomer } from "../models/ICustomer";
 
@@ -26,12 +26,6 @@ export const getAllBookings = async (): Promise<IBookingsResponse[]> => {
 const url_2: string =
   "https://school-restaurant-api.azurewebsites.net/booking/create";
 
-const customConfig = {
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
-
 export const createBooking = async (
   booking: INewBooking
 ): Promise<IBookingCreated> => {
@@ -40,10 +34,15 @@ export const createBooking = async (
   return response.data;
 };
 
-const url_3: string =
-  "https://school-restaurant-api.azurewebsites.net/booking/";
 
-export async function getBookingById(id: string): Promise<IBooking[]> {
+
+
+const url_3: string = 'https://school-restaurant-api.azurewebsites.net/booking/';
+
+
+
+export async function getBookingById (id: string):Promise<IBooking[]> {
+
   let response = await axios.get(url_3 + id);
 
   return response.data;
@@ -63,13 +62,16 @@ export const deleteBookingById = async (
 const url_5: string =
   "https://school-restaurant-api.azurewebsites.net/booking/update/";
 
-export const editBookingById = async (
-  id: string,
-  booking: IBooking
-): Promise<IBookingsResponse> => {
-  let response = await axios.put(url_5, booking + id);
-  return response.data;
-};
+
+
+// const url_5: string = 'https://school-restaurant-api.azurewebsites.net/booking/update/';
+
+
+ export const editBookingById = async(id:string, booking: IBookingUpdate): Promise<IBookingsResponse> =>{
+ let response = await axios.put(url_5 + id, booking)
+ return response.data;
+
+ }
 
 let customUrl = "https://school-restaurant-api.azurewebsites.net/customer/";
 
