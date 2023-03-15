@@ -22,7 +22,14 @@
     &__header {
       margin-bottom: 15px;
       margin-top: 15px;
-      text-transform: uppercase;
+      font-size: v.$titlesize;
+      font-family: v.$title;
+      color: v.$olive;
+      padding-top: 2.5em;
+    }
+    &__text{
+      font-family: v.$regular;
+      font-size: v.$regularsize;
     }
   }
 
@@ -35,9 +42,12 @@
 
   &__listContainer {
     margin: 30px;
+    padding: 1em;
+    font-family: v.$regular;
 
     &__icon {
       font-size: 50px;
+      color: v.$olive
     }
 
     &__icon:hover {
@@ -57,6 +67,9 @@
     &__header {
       margin-bottom: 30px;
       font-size: 40px;
+      font-family: v.$title;
+      font-size: v.$titlesize;
+      color: v.$olive;
     }
 
     &__form {
