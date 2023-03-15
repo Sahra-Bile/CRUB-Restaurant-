@@ -276,6 +276,17 @@ export const Booking = () => {
                   {errors.phone && (
                     <p className="error"> Skriv ditt telefon number &#11105;</p>
                   )}
+                  <div className="form2__container2__input__gdprContainer">
+                    <p className="form2__container2__input__gdprContainer__consent">
+                      Vid bokning godkänner du att vi tar del av dina
+                      personuppgifter enligt GDPR
+                    </p>
+                    <input
+                      type="checkbox"
+                      className="form2__container2__input__gdprContainer__check"
+                      required
+                    />
+                  </div>
                   <button
                     type="submit"
                     value={'book'}

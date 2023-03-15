@@ -1,10 +1,10 @@
-@use '../style/variables.scss' as v;
+@use "../style/variables.scss" as v;
 @use "../style/mixins.scss" as m;
 
 .big-container {
   margin: 0 auto;
   width: 100%;
-  height: min ;
+  height: min;
 
   .loadingDiv {
     display: inline-block;
@@ -12,7 +12,7 @@
     height: 100px;
 
     &:after {
-      content: ' ';
+      content: " ";
       display: block;
       width: 100px;
       height: 100px;
@@ -84,8 +84,6 @@
       height: 40px;
       font-family: v.$regular;
       background: none;
-
-
     }
 
     .select {
@@ -113,7 +111,7 @@
     }
 
     .search {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: "Courier New", Courier, monospace;
       font-size: 1.5rem;
       padding: 15px;
     }
@@ -152,7 +150,7 @@
 
     //*andra
     .lds-dual-ring:after {
-      content: ' ';
+      content: " ";
       display: block;
       width: 64px;
       height: 64px;
@@ -213,6 +211,17 @@
           @include m.desktop {
             width: 350px;
           }
+
+          &__gdprContainer {
+            &__consent {
+              color: white;
+            }
+
+            &__check {
+              width: 20px;
+              height: 20px;
+            }
+          }
         }
 
         &__send {
@@ -245,16 +254,15 @@
   color: v.$olive;
   font-family: v.$title;
 
-
   @include m.desktop {
     font-size: 1.8rem;
   }
 }
-.result{
+.result {
   font-size: v.$regularsize;
   font-family: v.$regular;
   color: v.$color-primary;
 }
-.time{
+.time {
   background-color: v.$olive;
 }

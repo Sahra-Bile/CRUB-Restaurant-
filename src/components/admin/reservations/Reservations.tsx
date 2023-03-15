@@ -3,32 +3,24 @@ import { BsFillPeopleFill } from 'react-icons/bs'
 import { MdAccessTime, MdDateRange } from 'react-icons/md'
 
 import { IBookingsResponse } from '../../../models/IBooking'
-import {
-  deleteBookingById,
-  getBookingById,
-} from '../../../services/handleBookingsAxios'
-import { toast } from 'react-toastify'
+import { deleteBookingById } from '../../../services/handleBookingsAxios'
 import { AdminBookingsContext } from '../../../contexts/AdminBookingsContext'
 import './reservation.scss'
-import { Link, useNavigate } from 'react-router-dom'
-import CustomerContext from '../../../contexts/CustomerContext'
-
-
-
+import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export const Reservation = () => {
   const [contextBookings, setContextBookings] = useState<IBookingsResponse[]>(
     [],
   )
   const bookings = useContext(AdminBookingsContext)
-  const navigate = useNavigate
 
   const handleDeleteClick = (id: string) => {
     if (window.confirm('Är du säkert att du vill ta bort bokningen?')) {
       deleteBookingById(id)
         .then(() => {
-          // toast('Bokningen är bort tagen.')
-          // toast('Bokningen är bort tagen.')
+          toast('Bokningen är bort tagen.')
+
           window.location.reload()
         })
         .catch((err) => {
@@ -38,11 +30,9 @@ export const Reservation = () => {
   }
 
   useEffect(() => {
+    if (contextBookings.length > 0) return
     setContextBookings(bookings)
-
-  }, [bookings])
-
-  console.log(' from reservations', bookings.length)
+  })
 
   let html = contextBookings.map((reservation) => {
     return (
@@ -68,9 +58,11 @@ export const Reservation = () => {
             ta bort
           </button>
           <Link to={`/bookingdetails/${reservation.customerId}`}>
-            <button className='btn primary '>mer info</button>
+            <button className="btn primary">mer info</button>
           </Link>
-
+          <Link to={`/edit/${reservation._id}`}>
+            <button className="btn primary">edit</button>
+          </Link>
         </div>
       </>
     )
