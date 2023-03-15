@@ -20,11 +20,6 @@ export const ReservationDetails = () => {
 
   const booking = bookings.find((booking) => booking._id === id)
 
-  const navigate = useNavigate
-
-
-
-
   useEffect(() => {
     async function getCustomerData() {
       if (id) {
@@ -40,17 +35,6 @@ export const ReservationDetails = () => {
   }, [id])
 
   console.log(' är inte tomt', customer)
-
-  // let detailsHtml = contextBookings.map((customer) => {
-  //   return (
-  //     <div className='container-div' key={customer.customerId}>
-  //       <p className='container-div'>{customer.date}</p>
-  //       <p>{customer.time}</p>
-
-  //     </div >
-  //   )
-  // })
-
 
   return (
     <>
