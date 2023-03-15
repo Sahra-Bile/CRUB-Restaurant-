@@ -3,41 +3,43 @@ import { NavBar } from './components/section/nav/Nav'
 import { Outlet } from 'react-router-dom'
 import { Footer } from './components/section/footer/Footer'
 import { FloatingNav } from './components/section/floating-nav/FloatingNav'
-import { deleteBookingById } from './services/handleBookingsAxios'
+import { getAllBookings } from './services/handleBookingsAxios'
+import { IBookingsResponse } from './models/IBooking'
+import { useEffect, useState } from 'react'
+import { AdminBookingsContext } from './contexts/AdminBookingsContext'
 
-export interface IDeleteContext {
+export interface IAdminBookingsContext {
   handleDeleteClick(id: string): void
 }
 
+
 function App() {
-  const handleDeleteClick = (id: string) => {
-    if (window.confirm('Är du säkert att du vill ta bort bokningen?')) {
-      deleteBookingById(id)
-        .then((res) => {
-          alert('Bokningen är bort tagen.')
-          window.location.reload()
-        })
-        .catch((err) => {
-          console.log(err.message)
-        })
+  const [bookings, setBookings] = useState<IBookingsResponse[]>([])
+
+  useEffect(() => {
+    const getData = async () => {
+      let bookingFromDB = await getAllBookings()
+      setBookings(bookingFromDB)
     }
-  }
+    if (bookings.length > 0) return
+    getData()
+  })
 
   return (
-    // <BookingsContext.Provider value={bookings}>
-    <main>
+    <AdminBookingsContext.Provider value={bookings}>
       <header>
         <NavBar></NavBar>
       </header>
+
       <main className="App">
-        <Outlet context={{ handleDeleteClick }}></Outlet>
+        <Outlet></Outlet>
       </main>
+
       <footer>
         <Footer />
       </footer>
       <FloatingNav />
-    </main>
-    // </BookingsContext.Provider>
+    </AdminBookingsContext.Provider>
   )
 }
 

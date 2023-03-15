@@ -1,11 +1,12 @@
+@use '../style/variables.scss' as v;
+@use "../style/mixins.scss" as m;
+
 .big-container {
   margin: 0 auto;
-  margin-top: 70px;
-  padding: 50px;
   width: 100%;
   height: min-content;
 
-  &__loadingDiv {
+  .loadingDiv {
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -19,112 +20,226 @@
       border-radius: 50%;
       border: 6px solid #fff;
       border-color: #fff transparent #fff transparent;
-      animation: Loading-animation 1.2s linear infinite;
-    }
-
-    &__step {
-      padding: 40px;
-
-      &__text {
-        text-align: center;
-        font-size: 1.5rem;
-        color: red;
-      }
-
-      &__form1 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-
-        &__container {
-          gap: 10px;
-          &__label {
-            text-align: center;
-          }
-        }
-      }
+      animation: lds-dual-ring 7.2s ease-in infinite;
     }
   }
 
-  .calender-div {
-    width: 300px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    // width: 500px; table läge
-  }
-
-  .calender {
-    font-size: 1rem;
-    padding: 10px;
-    border-radius: 10%;
-    border: 2px solid green;
-  }
-
-  input {
-    border: none;
-    padding: 7px;
-    width: min-content;
-    margin: 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-  }
-
-  .error {
-    font-size: 1.5rem;
-    color: red;
-  }
-
-  .select {
-    background-color: white;
-    border: 1px solid grey;
-    border-radius: 2px;
-    font-family: sans-serif;
-    padding: 5px;
-  }
-
-  .info {
-    margin: 0 0 30px 0;
-
-    &__p {
-      font-size: 1.2rem;
-      text-align: left;
-      font-family: 'Courier New', Courier, monospace;
-    }
-  }
-
-  .serach {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
-    padding: 15px;
-  }
-
-  .book {
-    border-radius: 30%;
-    background-color: royalblue;
-    font-size: 1.3rem;
-    font-family: 'Courier New', Courier, monospace;
-  }
-
-  .form2 {
+  &__step {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-  }
-}
+    background-color: white;
+    padding: 40px;
 
-@keyframes Loading-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+    &__text {
+      text-align: center;
+      font-family: v.$header_font;
+      font-size: 2rem;
+      color: black;
+    }
+
+    &__form1 {
+      background: rgba(33, 104, 105, 0.58);
+      max-width: 1200px;
+      width: 90%;
+      margin: 17vh auto 0 auto;
+      padding: 40px;
+      margin-bottom: 40px;
+      margin-top: 30px;
+      border-radius: 3px;
+      box-sizing: border-box;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &__container1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        &__label {
+          text-align: center;
+          font-size: 1.4rem;
+          color: #fff;
+
+          @include m.desktop {
+            font-size: 1.8rem;
+          }
+        }
+
+        &__calender-div {
+          width: 300px;
+
+          @include m.tablet {
+            width: none;
+          }
+        }
+      }
+    }
+    .calender {
+      font-size: 1rem;
+      padding: 15px;
+      border: 2px solid rgb(163, 209, 163);
+    }
+
+    .error {
+      font-size: 1.5rem;
+      color: red;
+    }
+
+    .select {
+      width: 20%;
+      background-color: white;
+      border: 1px solid grey;
+      border-radius: 2px;
+      font-family: sans-serif;
+      padding: 5px;
+    }
+
+    .info {
+      margin: 0 0 30px 0;
+
+      &__p {
+        font-size: 1rem;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        color: #fff;
+
+        @include m.desktop {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .search {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.5rem;
+      padding: 15px;
+    }
+
+    .book {
+      margin-top: 20px;
+      gap: 10px;
+      border-radius: 30%;
+      background-color: rgb(182, 139, 139);
+      font-size: 1.3rem;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    @keyframes Loading-animation {
+      0% {
+        transform: rotate(90deg);
+      }
+      25% {
+        transform: rotate(120deg);
+      }
+      50% {
+        transform: rotate(180deg);
+      }
+      75% {
+        transform: rotate(270deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .lds-dual-ring {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+    }
+
+    //*andra
+    .lds-dual-ring:after {
+      content: ' ';
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+    @keyframes lds-dual-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    label {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .form2 {
+      background: rgba(33, 104, 105, 0.58);
+      max-width: 550px;
+      width: 90%;
+      margin: 17vh auto 0 auto;
+      padding: 40px;
+      margin-bottom: 40px;
+      margin-top: 30px;
+      border-radius: 3px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &__container2 {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        padding: 50px;
+
+        &__input {
+          padding: 15px;
+          width: min-content;
+          margin: 10px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fff;
+          color: black;
+          width: 250px;
+          @include m.desktop {
+            width: 350px;
+          }
+        }
+
+        &__send {
+          background: rgba(33, 104, 105, 0.58);
+          color: white;
+          border-style: outset;
+          border-color: #c7e3f3;
+          height: 50px;
+          width: 100px;
+          font-family: v.$regular;
+
+          text-shadow: none;
+
+          &:hover {
+            background: #8cacc4;
+            color: #fff;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            box-shadow: 5px 5px 5px #eee;
+            text-shadow: none;
+          }
+        }
+      }
+    }
   }
 }

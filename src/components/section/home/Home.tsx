@@ -1,6 +1,6 @@
-import React from "react";
-import "./home.scss";
-import { About } from "../about/About";
+import React from 'react'
+import './home.scss'
+import { About } from '../about/About'
 
 export const Home = () => {
   return (
@@ -12,11 +12,7 @@ export const Home = () => {
             Vi erbjuder svensk husmanskost på vegetariskt vis.
           </p>
         </div>
-        <div
-          className="home
-        <About />
-      __presentationContainer"
-        >
+        <div className="home__presentationContainer">
           <p className="home__presentationContainer__info">
             Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod
             tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -27,5 +23,5 @@ export const Home = () => {
       </section>
       <About />
     </>
-  );
-};
+  )
+}

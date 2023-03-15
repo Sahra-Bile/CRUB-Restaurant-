@@ -19,27 +19,27 @@ body {
   line-height: 1.6;
   font-size: 0.9rem;
 }
-/* GENERAL CONTAINER CLASS */
+
+//  GENERAL CONTAINER CLASS
 .container {
-  width: v.$container-width-lg;
+  width: v.$container-width-lg 76%;
   margin-inline: auto;
   max-width: 1920px;
 }
 
-/* GENERAL SECTION STYLES */
-// section {
-//   padding: 10rem 0;
-// }
+GENERAL SECTION STYLES section {
+  padding: 10rem 0;
+}
 
-// section > h2 {
-//   text-align: center;
-// }
+section > h2 {
+  text-align: center;
+}
 
-// section > p {
-//   text-align: center;
-//   margin: 0.5rem auto 4rem;
-//   width: 40%;
-// }
+section > p {
+  text-align: center;
+  margin: 0.5rem auto 4rem;
+  width: 40%;
+}
 
 /* GENERAL SECTION STYLES */
 a {
@@ -47,7 +47,8 @@ a {
   transition: v.$transition;
 }
 
-/* GENERAL HEADING STYLES */
+//GENERAL HEADING STYLES
+
 h1,
 h2,
 h3,
@@ -102,6 +103,7 @@ img {
   border: 2px solid transparent;
   border-radius: v.$border-radius-2;
   cursor: pointer;
+  font-family: v.$regular;
 }
 
 .btn:hover {
@@ -136,7 +138,7 @@ img {
   padding: 0.5rem 1.2rem;
 }
 
-/* MEDIA QUERIES (tablets) */
+//MEDIA QUERIES (tablets)
 @media screen and (max-width: 1024px) {
   body {
     font-size: 1rem;
@@ -146,10 +148,10 @@ img {
     width: v.$container-width-md;
   }
 
-  // section > p {
-  //   width: 72%;
-  //   margin-bottom: 3rem;
-  // }
+  section > p {
+    width: 72%;
+    margin-bottom: 3rem;
+  }
 
   h1 {
     font-size: 2rem;
@@ -178,7 +180,7 @@ img {
     padding: 0.6rem 1.5rem;
   }
 
-  // section > p {
-  //   width: v.$container-width-md;
-  // }
+  section > p {
+    width: v.$container-width-md;
+  }
 }
