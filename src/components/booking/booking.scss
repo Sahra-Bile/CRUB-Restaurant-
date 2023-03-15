@@ -36,7 +36,8 @@
     &__text {
       text-align: center;
       font-family: v.$title;
-      font-size: 2rem;
+      font-size: v.$titlesize;
+      
       color: black;
     }
 

@@ -82,7 +82,7 @@ export const Booking = () => {
         <div className="big-container__step">
           {step === 1 && (
             <>
-              <h2 className="big-container__step__text">Boka Bord</h2>
+              <h2 className="big-container__step__text">Boka bord</h2>
               <form
                 className="big-container__step__form1"
                 onSubmit={handleSubmit(HandleOnFirstSubmit)}

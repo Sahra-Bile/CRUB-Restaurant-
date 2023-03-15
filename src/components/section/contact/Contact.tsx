@@ -7,8 +7,8 @@ export const Contact = () => {
     <section>
       <div className="contact">
         <div className="contact__container">
-          <h1 className="contact__container__header">Kontakta oss</h1>
-          <p>
+          <h1 className="contact__container__header">Kontakt</h1>
+          <p className="contact__container__text">
             Vi svarar mer än gärna på alla dina frågor kring allergier,
             ingredienser eller övriga funderingar. Ring eller skicka ett mail så
             svarar vi så fort vi kan!
