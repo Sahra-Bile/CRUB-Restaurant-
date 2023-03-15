@@ -1,24 +1,25 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from "react";
 
-import { checkAvailableTables, ISittings } from '../../services/conditional'
-import { Controller, useForm } from 'react-hook-form'
-import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css'
+import { checkAvailableTables, ISittings } from "../../services/conditional";
+import { Controller, useForm } from "react-hook-form";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
-import './booking.scss'
-import { createBooking } from '../../services/handleBookingsAxios'
+import "./booking.scss";
+import { createBooking } from "../../services/handleBookingsAxios";
 // import { ok } from 'assert'
-import { Link } from 'react-router-dom'
+import { useNavigate, useParams } from "react-router-dom";
 
 export const Booking = () => {
-  const [step, setStep] = useState(1) //! kolla fas sökning
-  const [isLoading, setIsLoading] = useState(false)
+  const [step, setStep] = useState(1); //! kolla fas sökning
+  const [isLoading, setIsLoading] = useState(false);
   const [isAvailable, setIsAvailable] = useState<ISittings>({
     theFirstSitting: false,
     theSecondSitting: false,
-  })
-  const [sitting, setSitting] = useState(0)
-  const [time, setTime] = useState('')
+  });
+  const [sitting, setSitting] = useState(0);
+  const [time, setTime] = useState("");
+  const navigate = useNavigate();
   // const [numberOfGuests, setNumberOfGuests] = useState(0)
 
   //* handleSubmit är fron react useForm hook länk här
@@ -30,37 +31,37 @@ export const Booking = () => {
     register,
 
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
   const [date, numberOfGuests, name, lastname, email, phone] = watch([
-    'date',
-    'numberOfGuests',
-    'name',
-    'lastname',
-    'email',
-    'phone',
-  ])
+    "date",
+    "numberOfGuests",
+    "name",
+    "lastname",
+    "email",
+    "phone",
+  ]);
   //* e: FormEvent  e.preventDefault() går inte använda när man använder UseForm hooks
   //* Kontrollerar valt datum och sittning i Databasen
   const HandleOnFirstSubmit = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     const checkAvailable = async () => {
       const isAvailableinDB = await checkAvailableTables(
         date.toLocaleDateString(),
-        numberOfGuests,
-      )
-      console.log('Available', isAvailableinDB)
+        numberOfGuests
+      );
+      console.log("Available", isAvailableinDB);
 
-      setIsAvailable(isAvailableinDB)
-    }
-    checkAvailable()
-    setStep(2)
-    setIsLoading(false) // borde vara false
-  }
+      setIsAvailable(isAvailableinDB);
+    };
+    checkAvailable();
+    setStep(2);
+    setIsLoading(false); // borde vara false
+  };
   //*  Genomför bokning
   const HandleOnSecondSubmit = async () => {
     let booking = {
-      restaurantId: '64089b0d76187b915f68e16f',
+      restaurantId: "64089b0d76187b915f68e16f",
       date: date.toLocaleDateString(),
       time: time,
       numberOfGuests: numberOfGuests,
@@ -69,20 +70,20 @@ export const Booking = () => {
         lastname: lastname,
         email: email,
         phone: phone,
-        id: '',
       },
-    }
-    setIsLoading(true)
-    createBooking(booking).then((resData) => {
-      alert('tack sharmuto för ditt hårda jobb!')
-      // if (resData) return <div>tack för din bokning</div>
+    };
 
-      console.log(resData)
-      setIsLoading(false)
-    })
-    console.log(' this is booking', booking)
-    console.log(' this is booking', booking.customer.id)
-  }
+    setIsLoading(true);
+
+    createBooking(booking).then((resData) => {
+      setIsLoading(false);
+      console.log("Detta är det vi får tillbaka", resData);
+
+      navigate("/booking/thankyou/" + resData.insertedId);
+    });
+
+    console.log(booking);
+  };
 
   return (
     <section className="container big-container">
@@ -109,11 +110,11 @@ export const Booking = () => {
                           className="calender"
                           onChange={onChange}
                           minDate={new Date()}
-                          maxDate={new Date('2023-12-31')}
+                          maxDate={new Date("2023-12-31")}
                         />
                       )}
                     />
-                  </div>{' '}
+                  </div>{" "}
                   {errors.date && <p className="error"> Välj ett datum</p>}
                   <label>Antal personer</label>
                   <select
@@ -121,7 +122,7 @@ export const Booking = () => {
                     className="select"
                     // onChange={(e) => setNumberOfGuests(+e.target.value)}
                     // {numberOfGuests < 0 ? <p>{numberOfGuests}</p> : <p>välj antal gäster</p>}
-                    {...register('numberOfGuests', {
+                    {...register("numberOfGuests", {
                       required: true,
                       min: 1,
                       max: 7,
@@ -152,7 +153,7 @@ export const Booking = () => {
                   </div>
                   <input
                     type="submit"
-                    value={'Kontrollera tillgänglighet'}
+                    value={"Kontrollera tillgänglighet"}
                     className=" btn primary"
                   />
                 </div>
@@ -175,16 +176,16 @@ export const Booking = () => {
                   <button
                     className="book btn primary"
                     onClick={() => {
-                      setSitting(1)
-                      setStep(3)
-                      setTime('12:00')
+                      setSitting(1);
+                      setStep(3);
+                      setTime("12:00");
                     }}
                   >
                     Boka kl. 12:00
                   </button>
                 ) : (
                   <p className="search">
-                    {' '}
+                    {" "}
                     Första sittningen är inte tillgänglig
                   </p>
                 )}
@@ -193,9 +194,9 @@ export const Booking = () => {
                   <button
                     className="book btn primary"
                     onClick={() => {
-                      setSitting(2)
-                      setStep(3)
-                      setTime('19:00')
+                      setSitting(2);
+                      setStep(3);
+                      setTime("19:00");
                     }}
                   >
                     Boka kl. 19.00
@@ -220,7 +221,7 @@ export const Booking = () => {
                 <p>
                   Din sökning: <br />
                   {date.toLocaleDateString()} <br />
-                  {sitting === 1 ? '12.00 ' : '19.00 '}
+                  {sitting === 1 ? "12.00 " : "19.00 "}
                   <br />
                   {numberOfGuests} personer
                 </p>
@@ -232,32 +233,32 @@ export const Booking = () => {
                   <input
                     className="name"
                     required
-                    {...register('name', {
+                    {...register("name", {
                       required: true,
                       minLength: 1,
                       maxLength: 30,
                     })}
                     type="text"
-                  />{' '}
+                  />{" "}
                   {errors.name && <p> Skriv ditt Förnamn &#11105;</p>}
                   <label>Efternamn:</label>
                   <input
                     className="lastname"
                     required
-                    {...register('lastname', {
+                    {...register("lastname", {
                       required: true,
                       minLength: 1,
                       maxLength: 30,
                     })}
                     type="text"
-                  />{' '}
+                  />{" "}
                   {errors.name && <p> Skriv ditt Efternamn &#11105;</p>}
                   <label>E-post:</label>
                   <input
                     required
                     className="email"
                     value={email}
-                    {...register('email', {
+                    {...register("email", {
                       required: true,
                     })}
                     type="email"
@@ -269,7 +270,7 @@ export const Booking = () => {
                     value={phone}
                     className="phone"
                     required
-                    {...register('phone', {
+                    {...register("phone", {
                       required: true,
                       minLength: 10,
                       maxLength: 12,
@@ -277,8 +278,8 @@ export const Booking = () => {
                   />
                   {errors.phone && <p> Skriv ditt telefon number &#11105;</p>}
                   {/* <Link to={'/'}> */}
-                  <button type="submit" value={'book'} className="btn primary">
-                    {' '}
+                  <button type="submit" value={"book"} className="btn primary">
+                    {" "}
                     boka
                   </button>
                   {/* </Link> */}
@@ -289,5 +290,5 @@ export const Booking = () => {
         </div>
       )}
     </section>
-  )
-}
+  );
+};
