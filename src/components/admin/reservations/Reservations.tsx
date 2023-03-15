@@ -49,20 +49,20 @@ export const Reservation = () => {
             <BsFillPeopleFill /></p>
           <span className="big-container__container__info">{reservation.numberOfGuests}</span>
 
-          <button
-            className="btn primary"
-            onClick={() => {
-              handleDeleteClick(reservation._id)
-            }}
-          >
-            ta bort
-          </button>
-          <Link to={`/bookingdetails/${reservation.customerId}`}>
-            <button className="btn primary">mer info</button>
-          </Link>
-          <Link to={`/edit/${reservation._id}`}>
-            <button className="btn primary">edit</button>
-          </Link>
+          <article className='big-container__container__btns'>
+            <button className='big-container__container__btns' id="delete"
+              onClick={() => {
+                handleDeleteClick(reservation._id)
+              }}>
+              Ta bort
+            </button>
+            <Link to={`/bookingdetails/${reservation.customerId}`}>
+              <button className='big-container__container__btns' id="inspect">Bokningsdetaljer</button>
+            </Link>
+            <Link to={`/edit/${reservation._id}`}>
+              <button className='big-container__container__btns' id="edit">Redigera</button>
+            </Link>
+          </article>
         </div>
       </>
     )

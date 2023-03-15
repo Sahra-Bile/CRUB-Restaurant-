@@ -24,16 +24,51 @@
     width: 45%;
     background-color: v.$grey-bg;
     border-radius: 10px;
+    &__btns{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      border: 2px solid transparent;
+      border-radius: v.$border-radius-2;
+      cursor: pointer;
+      font-family: v.$regular;
+      font-size: v.$regularsize;
+      color: v.$dark-title;
+      padding: 0.4;
+      
+      #delete{
+        background-color: #D27685;
+        width: 170px;
+      }
+      #inspect{
+      background-color: rgba(33, 104, 105, 0.58);
+      width: 170px;
+      }
+      #edit{
+        background-color: #FDD36A;
+        width: 170px
+      }
+    }
+    
     @include m.tablet{
       width: 30%;
     }
     @include m.desktop{
       width: 22%;
     }
+    &__info{
+      font-size: v.$regularsize;
+      color: v.$olive;
+    }
 
     &__icons {
       font-size: 1.5rem;
-      color: v.$olive;
+      color: v.$color-primary;
     }
   }
 }
+

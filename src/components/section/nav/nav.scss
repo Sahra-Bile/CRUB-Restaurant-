@@ -36,8 +36,9 @@
       }
 
       &__links {
-        font-size: 1.2rem;
+        font-size: v.$regularsize;
         font-family: v.$regular;
+        color: v.$dark-title;
       }
     }
   }
