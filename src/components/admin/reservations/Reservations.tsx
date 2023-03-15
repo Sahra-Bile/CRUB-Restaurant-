@@ -10,18 +10,24 @@ import {
 import { toast } from 'react-toastify'
 import { AdminBookingsContext } from '../../../contexts/AdminBookingsContext'
 import './reservation.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import CustomerContext from '../../../contexts/CustomerContext'
+
+
+
 
 export const Reservation = () => {
   const [contextBookings, setContextBookings] = useState<IBookingsResponse[]>(
     [],
   )
   const bookings = useContext(AdminBookingsContext)
+  const navigate = useNavigate
 
   const handleDeleteClick = (id: string) => {
     if (window.confirm('Är du säkert att du vill ta bort bokningen?')) {
       deleteBookingById(id)
         .then(() => {
+          // toast('Bokningen är bort tagen.')
           // toast('Bokningen är bort tagen.')
           window.location.reload()
         })
@@ -33,6 +39,7 @@ export const Reservation = () => {
 
   useEffect(() => {
     setContextBookings(bookings)
+
   }, [bookings])
 
   console.log(' from reservations', bookings.length)
@@ -62,15 +69,10 @@ export const Reservation = () => {
           >
             ta bort
           </button>
-          <Link to={`/admin/${reservation._id}`}>
-            <button
-              onClick={() => {
-                getBookingById(reservation._id)
-              }}
-            >
-              more info
-            </button>
+          <Link to={`/bookingdetails/${reservation.customerId}`}>
+            <button className='btn primary'>mer info</button>
           </Link>
+
         </div>
       </>
     )

@@ -23,14 +23,17 @@ export const checkAvailableTables = async (
 
   for (let i = 0; i < response.length; i++) {
     //** */ får listan med totala bokingar
-    let databaseDate = new Date(response[i].date);
-    let inComingDate = new Date(date)
+    let databaseDate:any = new Date(response[i].date);
+    let inComingDate:any = new Date(date)
+
+    if (databaseDate.getDate() === inComingDate.getDate()) {
 
     if (databaseDate.getTime() === inComingDate.getTime()) {
       
        console.log(" is?", inComingDate)
       //* kollat vilka som matchar önskat datum
 
+  
        //* Kontroller  första Sittning  1:
        if (response[i].time === '12:00') {
         tablesAtLunch = tablesAtLunch + 1;
@@ -73,7 +76,7 @@ export const checkAvailableTables = async (
           }
           //*om användaren bokar för mindre än 6 personer
       
-
+        }
 
         console.log(isAvailable)
 
@@ -81,10 +84,3 @@ export const checkAvailableTables = async (
 
    
   }
-
-  
-
-
-
-
-
