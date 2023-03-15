@@ -11,13 +11,15 @@
 
   &__container {
     &__header {
-      font-family: v.$first_page_font;
+      font-family: v.$title;
       margin-bottom: 20px;
-      color: rgba(33, 104, 105, 0.58);
+      color: rgba(33, 105, 71, 0.58);
       font-size: 80px;
     }
 
     &__info {
+      font-family: v.$regular;
+      color: v.$olive;
     }
   }
 
@@ -27,6 +29,8 @@
       margin-right: 20%;
     }
     &__info {
+      font-family: v.$regular;
+      font-size: 0.8em;
     }
   }
 }

@@ -1,7 +1,9 @@
 @use '../../style/variables.scss' as v;
+@use '../../style/mixins.scss' as m;
 .article {
   // margin-top: 15%;
   width: 100%;
+  
 
   &-title {
     font-family: v.$title;
@@ -30,7 +32,23 @@
     }
   }
 }
-
-.icons {
-  font-size: 4rem;
+.details-page{
+  height: calc(100vh - 14rem);
+  padding-top: 5em;
+  &__container{
+padding: 6em;
+  
+  background-color: v.$olive-low;
+    &__title{
+      font-family: v.$title;
+      font-size: 2.4em;
+    }
+    &__text{
+      font-family: v.$regular;
+      font-size: 1.2em;
+      &__info{
+        color: darkolivegreen;
+      }
+    }
+  }
 }

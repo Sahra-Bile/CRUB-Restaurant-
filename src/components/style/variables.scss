@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mynerve&display=swap');
 
-$myFont_family: 'Indie Flower', cursive;
 $tablet_breakpont: 676px;
 $desktop_breakpoint: 1200px;
 
@@ -12,6 +11,11 @@ $dark-lightness: 44%;
 $light-lightness: 94%;
 $white-lightness: 100%;
 $color-primary: hsl(132, 18%, 42);
+$olive: rgb(87, 96, 71);
+$darker-bg: rgba(33, 105, 71, 0.58);
+$dark-title: rgb(45, 66, 6);
+$olive-low: rgba(87, 96, 71, 0.231);
+$grey-bg: rgba(186, 187, 183, 0.231);
 
 $color-primary_2: hsl(205, 53%, 92%);
 
@@ -35,6 +39,3 @@ $transition: all 500ms ease;
 // font family
 $title: 'Prata', serif;
 $regular: 'Jaldi', sans-serif;
-$first_page_font: ' Mynerve ', cursive, sans-serif;
-$header_font: 'EB Garamond', serif;
-$all_text: 'Bodoni Moda', serif;
