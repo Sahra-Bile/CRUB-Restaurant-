@@ -13,13 +13,13 @@ export const ReservationDetails = () => {
     [],
   )
 
-  const { customerId } = useParams()
+  const { id } = useParams()
 
   const [customer, setCustomer] = useState<ICustomer>()
 
   const bookings = useContext(AdminBookingsContext)
 
-  const booking = bookings.find((booking) => booking._id === customerId)
+  const booking = bookings.find((booking) => booking._id === id)
 
   const navigate = useNavigate
 
@@ -27,28 +27,30 @@ export const ReservationDetails = () => {
 
 
   useEffect(() => {
-    async function getCustomerData(id: string) {
-      let response = await getCustomerById(id)
+    async function getCustomerData() {
+      if (id) {
+        let response = await getCustomerById(id)
 
-      setCustomer(response)
-      return response.data
+        setCustomer(response[0])
+        //return response.data
+      }
     }
-    setContextBookings([]);
+    //setContextBookings([]);
 
-    // getCustomerData()
-  }, [booking?.customerId])
+    getCustomerData()
+  }, [id])
 
   console.log(' är inte tomt', customer)
 
-  let detailsHtml = contextBookings.map((customer) => {
-    return (
-      <div className='container-div' key={customer._id}>
-        <p className='container-div'>{customer.date}</p>
-        <p>{customer.time}</p>
+  // let detailsHtml = contextBookings.map((customer) => {
+  //   return (
+  //     <div className='container-div' key={customer.customerId}>
+  //       <p className='container-div'>{customer.date}</p>
+  //       <p>{customer.time}</p>
 
-      </div >
-    )
-  })
+  //     </div >
+  //   )
+  // })
 
 
   return (

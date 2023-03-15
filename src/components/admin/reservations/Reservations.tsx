@@ -65,7 +65,7 @@ export const Reservation = () => {
           >
             ta bort
           </button>
-          <Link to={`/admin/${reservation._id}`}>
+          <Link to={`/bookingdetails/${reservation.customerId}`}>
             <button className='btn primary'>mer info</button>
           </Link>
 

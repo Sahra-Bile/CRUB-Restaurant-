@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { IBooking, IBookingsResponse, INewBooking } from '../models/IBooking';
+import { IBooking, IBookingsResponse, ICustomer, INewBooking } from '../models/IBooking';
 
 
 // const body = JSON.stringify({ bookingsDefaultValue })
@@ -87,8 +87,8 @@ const url_5: string = 'https://school-restaurant-api.azurewebsites.net/booking/u
  let customUrl = 'https://school-restaurant-api.azurewebsites.net/customer/'
 
 
- export const getCustomerById = async(id:string) =>{
-  let response = await axios.get(customUrl + id)
+ export const getCustomerById = async(id:string): Promise<ICustomer[]> =>{
+  let response = await axios.get<ICustomer[]>(customUrl + id)
 
   return response.data;
  }
