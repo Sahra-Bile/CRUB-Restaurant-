@@ -1,0 +1,53 @@
+@use "../../style/variables.scss" as v;
+@use "../../style/mixins.scss" as m;
+
+.bookingform {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__header {
+      font-size: 30px;
+      padding: 20px;
+    }
+
+    &__calendar {
+    }
+
+    &__curtainContainer {
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+    }
+  }
+
+  &__btnContainer {
+    @include m.tablet {
+      display: flex;
+    }
+  }
+}
+
+.select {
+  width: 200px;
+}
+
+#button {
+  margin: 20px;
+  background-color: v.$darker-bg;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 0.6rem 2.5rem;
+  border-radius: v.$border-radius-2;
+  cursor: pointer;
+  font-family: v.$regular;
+}
+
+#button:hover {
+  border-color: v.$color-light;
+  transform: translateY(-0.5rem);
+}

@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import Calendar from 'react-calendar'
 import { Controller, FieldValues, useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import Calendar from "react-calendar";
+import { Controller, FieldValues, useForm } from "react-hook-form";
+import { Link, useParams } from "react-router-dom";
 
 import {
   bookingsDefaultValue,
@@ -13,6 +17,7 @@ import {
   editBookingById,
   getBookingById,
 } from '../../../services/handleBookingsAxios'
+import './editBooking.scss'
 
 export const EditBooking = () => {
   const [existingBooking, setExistingBooking] = useState<IBookingsResponse>(
@@ -37,6 +42,7 @@ export const EditBooking = () => {
 
   //* steg 1 hämta booking by id
 
+  //* steg 1 hämta booking
   useEffect(() => {
     const getData = async () => {
       if (id) {
@@ -82,6 +88,8 @@ export const EditBooking = () => {
         data.numberOfGuests,
       )
 
+        data.numberOfGuests
+      );
       if (
         (data.time === '12:00' && isAvailableinDB.theFirstSitting === true) ||
         (data.time === '19:00' && isAvailableinDB.theFirstSitting === true)
@@ -120,9 +128,11 @@ export const EditBooking = () => {
         <></>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="bookingform">
-          <div>
-            <label>Välj datum:</label>
-            <div>
+          <div className="bookingform__container">
+            <label className="bookingform__container__header">
+              Välj datum:
+            </label>
+            <div className="bookingform__container__calendar">
               <Controller
                 control={control}
                 name="date"
@@ -136,37 +146,39 @@ export const EditBooking = () => {
               />
             </div>
             {errors.date && <p>Välj ett datum:</p>}
-            <label>Antal personer:</label>
-            <select
-              className="select"
-              {...register('numberOfGuests', {
-                min: 1,
-                max: 12,
-              })}
-              defaultValue={existingBooking.numberOfGuests}
-            >
-              <option disabled value={0}>
-                0
-              </option>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>4</option>
-              <option value={5}>5</option>
-              <option value={6}>6</option>
-              <option value={7}>7</option>
-              <option value={8}>8</option>
-              <option value={9}>9</option>
-              <option value={10}>10</option>
-              <option value={11}>11</option>
-              <option value={12}>12</option>
-            </select>
-            {errors.numberOfGuests && <p>Välj antal person</p>}
-            <label>SittingsTid:</label>
-            <select {...register('time')} defaultValue={existingBooking.time}>
-              <option value="12:00"> kl.12.00</option>
-              <option value="19:00">kl. 19.00</option>
-            </select>
+            <div className="bookingform__container__curtainContainer">
+              <label>Antal personer:</label>
+              <select
+                className="select"
+                {...register('numberOfGuests', {
+                  min: 1,
+                  max: 12,
+                })}
+                defaultValue={existingBooking.numberOfGuests}
+              >
+                <option disabled value={0}>
+                  0
+                </option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+                <option value={6}>6</option>
+                <option value={7}>7</option>
+                <option value={8}>8</option>
+                <option value={9}>9</option>
+                <option value={10}>10</option>
+                <option value={11}>11</option>
+                <option value={12}>12</option>
+              </select>
+              {errors.numberOfGuests && <p>Välj antal person</p>}
+              <label>Sittning:</label>
+              <select {...register('time')} defaultValue={existingBooking.time}>
+                <option value="12:00"> kl.12.00</option>
+                <option value="19:00">kl. 19.00</option>
+              </select>
+            </div>
             {errors.time && <p>Välj en tid:</p>}
 
             <input
@@ -178,6 +190,9 @@ export const EditBooking = () => {
             <button type="submit" className="btn primary">
               uppdatera bokningen
             </button>
+            <Link to={'/admin'} className="btn primary">
+              go tillbaka
+            </Link>
 
             {isAvailable.theFirstSitting ? (
               <></>
