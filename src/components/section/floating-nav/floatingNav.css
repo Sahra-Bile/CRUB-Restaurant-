@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mynerve&display=swap");
+/* GENERAL CONTAINER VARIABLES */
+/* BORDER RADIUS VARIABLES */
+/* GENERAL TRANSITION VARIABLE */
+.floating__nav {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 3rem;
+  left: 50%;
+  font-size: 2rem;
+  transform: translateX(-50%);
+  z-index: 9;
+  animation: animateFloatingNav 300ms ease forwards;
+}
+@media screen and (min-width: 676px) {
+  .floating__nav {
+    display: none;
+  }
+}
+@keyframes animateFloatingNav {
+  from {
+    opacity: 0;
+    bottom: -5rem;
+  }
+  to {
+    opacity: 1;
+    bottom: 3rem;
+  }
+}
+.floating__nav .scrollspy {
+  display: flex;
+  gap: 1rem;
+  background: rgba(82, 90, 67, 0.583);
+  padding: 0.8rem 1.5rem;
+  border-radius: 3rem;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+}
+.floating__nav__links {
+  padding: 0.6rem;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  color: white;
+  display: grid;
+}/*# sourceMappingURL=floatingNav.css.map */

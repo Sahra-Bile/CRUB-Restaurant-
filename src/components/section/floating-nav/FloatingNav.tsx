@@ -1,7 +1,6 @@
 import React from 'react'
 import { data } from './data'
 import './floatingNav.scss'
-
 import Scrollspy from 'react-scrollspy'
 import { Navbar } from './Navbar'
 
@@ -11,7 +10,7 @@ export const FloatingNav = () => {
       <Scrollspy
         offset={-500}
         className="scrollspy"
-        items={['home', 'about', 'booking', 'contact']}
+        items={['home', 'booking', 'contact', 'menu', 'admin']}
         currentClassName="active"
       >
         {data.map((item) => (

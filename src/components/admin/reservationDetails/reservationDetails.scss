@@ -1,0 +1,38 @@
+@use '../../style/variables.scss' as v;
+@use '../../style/mixins.scss' as m;
+
+.details-page {
+  height: calc(100vh - 14rem);
+  background-color: v.$olive-low;
+
+  &__container {
+    padding-top: 3rem;
+    @include m.tablet {
+      padding: 10em;
+    }
+
+    &__title {
+      font-family: v.$title;
+      font-size: 2.4em;
+      padding-bottom: 4rem;
+      @include m.tablet {
+        font-size: 3rem;
+      }
+    }
+    &__text {
+      font-family: v.$regular;
+      font-size: v.$regularsize;
+      color: v.$olive;
+      @include m.tablet {
+        font-size: 1.6rem;
+      }
+
+      &__info {
+        color: v.$dark-title;
+        @include m.tablet {
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+}

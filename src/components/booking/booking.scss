@@ -1,0 +1,266 @@
+@use "../style/variables.scss" as v;
+@use "../style/mixins.scss" as m;
+
+.big-container {
+  margin: 0 auto;
+  width: 100%;
+  height: min;
+
+  .loadingDiv {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+
+    &:after {
+      content: ' ';
+      display: block;
+      width: 100px;
+      height: 100px;
+      margin: 8px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: lds-dual-ring 5.2s ease-in infinite;
+    }
+  }
+
+  &__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(119, 174, 177, 0.58);
+    padding: 40px;
+    min-height: 100vh;
+
+    @include m.desktop {
+      padding: 80px;
+      width: 80%;
+    }
+
+    &__text {
+      text-align: center;
+      font-family: v.$title;
+      font-size: v.$titlesize;
+      color: v.$olive;
+    }
+
+    &__form1 {
+      background: rgba(33, 104, 105, 0.58);
+      max-width: 1200px;
+      width: 90%;
+      margin: 17vh auto 0 auto;
+      padding: 40px;
+      margin-bottom: 40px;
+      margin-top: 30px;
+      border-radius: 3px;
+      box-sizing: border-box;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &__container1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        @include m.desktop {
+          flex-direction: row;
+          justify-content: space-evenly;
+          gap: 50px;
+        }
+
+        &__select-div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+
+        &__calender-div {
+          width: 300px;
+        }
+      }
+    }
+    .calender {
+      font-size: 1rem;
+      padding: 15px;
+      border: 2px solid rgb(163, 209, 163);
+    }
+
+    .error {
+      font-size: 1.5rem;
+      color: orange;
+      height: 40px;
+      font-family: v.$regular;
+      background: none;
+    }
+
+    .select {
+      width: 20%;
+      background-color: white;
+      border: 1px solid grey;
+      border-radius: 2px;
+      font-family: sans-serif;
+      padding: 5px;
+    }
+
+    .info {
+      margin: 0 0 30px 0;
+
+      &__p {
+        text-align: center;
+        font-family: v.$regular;
+        font-size: v.$regularsize;
+        color: #fff;
+
+        @include m.desktop {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .book {
+      margin-top: 20px;
+      gap: 10px;
+      background-color: v.$olive;
+      font-size: 1.3rem;
+      font-family: v.$regular;
+    }
+
+    .lds-dual-ring {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+    }
+
+    //*andra
+    .lds-dual-ring:after {
+      content: ' ';
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+    @keyframes lds-dual-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    label {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .form2 {
+      background: rgba(33, 104, 105, 0.58);
+      max-width: 550px;
+      width: 90%;
+      margin: 17vh auto 0 auto;
+      padding: 40px;
+      margin-bottom: 40px;
+      margin-top: 30px;
+      border-radius: 3px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @include m.desktop {
+        max-width: none;
+        width: 100%;
+      }
+
+      &__container2 {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        padding: 50px;
+
+        &__input {
+          padding: 15px;
+          width: min-content;
+          margin: 10px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fff;
+          color: black;
+          width: 250px;
+          @include m.desktop {
+            width: 450px;
+            padding: 30px;
+          }
+
+          &__gdprContainer {
+            &__consent {
+              color: white;
+            }
+
+            &__check {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+
+        &__send {
+          background: rgba(33, 104, 105, 0.58);
+          color: white;
+          border-style: outset;
+          border-color: #c7e3f3;
+          height: 50px;
+          width: 100px;
+          font-family: v.$regular;
+
+          text-shadow: none;
+
+          &:hover {
+            background: #8cacc4;
+            color: #fff;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            box-shadow: 5px 5px 5px #eee;
+            text-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+.label {
+  text-align: center;
+  font-size: 1.4rem;
+  color: v.$olive;
+  font-family: v.$title;
+
+  @include m.desktop {
+    font-size: 2.6rem;
+  }
+}
+.result {
+  font-size: v.$regularsize;
+  font-family: v.$regular;
+  color: v.$color-primary;
+  @include m.desktop {
+    font-size: 2rem;
+  }
+}
+.time {
+  background-color: v.$olive;
+}

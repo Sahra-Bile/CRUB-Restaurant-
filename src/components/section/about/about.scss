@@ -1,0 +1,64 @@
+@use '../../style/variables.scss' as v;
+@use '../../style/mixins.scss' as m;
+
+.about-container {
+  &__article {
+    margin: 1em;
+    padding: 3em;
+
+    &__title {
+      font-family: v.$title;
+      color: v.$olive;
+    }
+    &__desc {
+      font-family: v.$regular;
+    }
+  }
+  &__img {
+    width: 100%;
+  }
+
+  @include m.tablet {
+    position: relative;
+    padding-bottom: 5em;
+    &__article {
+      position: absolute;
+      width: 50%;
+      margin-left: 40%;
+      margin-top: 30%;
+      background: v.$whiter;
+      opacity: 90%;
+      &__title {
+        font-size: 1.5em;
+      }
+      &__desc {
+        font-size: 1.2em;
+      }
+    }
+    &__img {
+      width: 70%;
+      margin-left: 10%;
+    }
+
+    @include m.desktop {
+      position: relative;
+      &__article {
+        width: 45%;
+        margin-top: 10%;
+        margin-left: 45%;
+        padding-top: 15%;
+        padding-bottom: 15%;
+        &__title {
+          font-size: 2em;
+        }
+        &__desc {
+          margin: 10%;
+        }
+      }
+      &__img {
+        width: 50%;
+        margin-left: 10%;
+      }
+    }
+  }
+}

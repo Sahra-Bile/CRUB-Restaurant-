@@ -2,26 +2,24 @@
 @use "../../style/mixins.scss" as m;
 
 .nav {
-  width: 100vw;
-  height: 4rem;
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
   background: rgba(33, 104, 105, 0.58);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9;
-  box-shadow: 0 1rem 1.5rem hsla(v.$primary-hue, 68%, 42%, 20%);
-  transition: v.$transition;
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: v.$container-width-lg;
+    margin-inline: auto;
+    max-width: 1920px;
 
     &__logo {
-      color: #fff;
-      font-family: v.$myFont_family;
+      color: v.$offwhite;
+      font-family: v.$title;
+      font-size: 3rem;
     }
 
     &__menu {
@@ -33,8 +31,9 @@
       }
 
       &__links {
-        font-size: 1.2rem;
-        font-family: v.$myFont_family;
+        font-size: v.$regularsize;
+        font-family: v.$regular;
+        color: v.$offwhite;
       }
     }
   }

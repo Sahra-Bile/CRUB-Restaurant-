@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mynerve&display=swap");
+/* GENERAL CONTAINER VARIABLES */
+/* BORDER RADIUS VARIABLES */
+/* GENERAL TRANSITION VARIABLE */
+.error {
+  height: 100vh;
+  background-image: url(https://images.unsplash.com/photo-1509047319667-c1a8de3000c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80);
+  background-repeat: no-repeat;
+  background-color: gray;
+  background-position: center;
+  position: relative;
+  background-size: 1;
+}
+@media screen and (min-width: 1200px) {
+  .error {
+    background-image: url(https://images.unsplash.com/photo-1508935662753-629c6fae16e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80);
+  }
+}
+.error__container {
+  background-color: rgba(180, 222, 255, 0.849);
+  position: absolute;
+  padding: 4em;
+  left: 20%;
+  top: 35%;
+}
+@media screen and (min-width: 1200px) {
+  .error__container {
+    padding: 4em;
+    left: 38%;
+    top: 35%;
+  }
+}
+.error__container__message {
+  font-size: 1.6em;
+  font-family: "Jaldi", sans-serif;
+  color: rgb(28, 28, 57);
+}/*# sourceMappingURL=NotFound.css.map */

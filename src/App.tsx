@@ -3,27 +3,38 @@ import { NavBar } from './components/section/nav/Nav'
 import { Outlet } from 'react-router-dom'
 import { Footer } from './components/section/footer/Footer'
 import { FloatingNav } from './components/section/floating-nav/FloatingNav'
+import { getAllBookings } from './services/handleBookingsAxios'
+import { IBookingsResponse } from './models/IBooking'
+import { useEffect, useState } from 'react'
+import { AdminBookingsContext } from './contexts/AdminBookingsContext'
 
 function App() {
-  // kolla om floting nav borde visas eller gömmas
+  const [bookings, setBookings] = useState<IBookingsResponse[]>([])
 
-  // kolla om vi scrolled ska upp eller nere rund 20px
-
-  // cleanup function
+  useEffect(() => {
+    const getData = async () => {
+      let bookingFromDB = await getAllBookings()
+      setBookings(bookingFromDB)
+    }
+    if (bookings.length > 0) return
+    getData()
+  })
 
   return (
-    <main>
+    <AdminBookingsContext.Provider value={bookings}>
       <header>
         <NavBar></NavBar>
       </header>
+
       <main className="App">
         <Outlet></Outlet>
       </main>
+
       <footer>
         <Footer />
       </footer>
       <FloatingNav />
-    </main>
+    </AdminBookingsContext.Provider>
   )
 }
 

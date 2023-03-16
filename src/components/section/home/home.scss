@@ -1,0 +1,36 @@
+@use "../../style/variables.scss" as v;
+@use "../../style/mixins.scss" as m;
+
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 22px;
+  width: 100%;
+
+  &__container {
+    &__header {
+      font-family: v.$title;
+      margin-bottom: 20px;
+      color: rgba(33, 105, 71, 0.58);
+      font-size: 80px;
+    }
+
+    &__info {
+      font-family: v.$regular;
+      color: v.$olive;
+    }
+  }
+
+  &__presentationContainer {
+    @include m.tablet {
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+    &__info {
+      font-family: v.$regular;
+      font-size: 0.8em;
+    }
+  }
+}

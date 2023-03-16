@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mynerve&display=swap");
+/* GENERAL CONTAINER VARIABLES */
+/* BORDER RADIUS VARIABLES */
+/* GENERAL TRANSITION VARIABLE */
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 22px;
+  width: 100%;
+}
+.home__container__header {
+  font-family: "Prata", serif;
+  margin-bottom: 20px;
+  color: rgba(33, 105, 71, 0.58);
+  font-size: 80px;
+}
+.home__container__info {
+  font-family: "Jaldi", sans-serif;
+  color: rgb(87, 96, 71);
+}
+@media screen and (min-width: 676px) {
+  .home__presentationContainer {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+.home__presentationContainer__info {
+  font-family: "Jaldi", sans-serif;
+  font-size: 0.8em;
+}/*# sourceMappingURL=home.css.map */

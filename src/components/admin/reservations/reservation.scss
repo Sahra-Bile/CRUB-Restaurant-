@@ -1,0 +1,69 @@
+@use '../../style/variables.scss' as v;
+@use '../../style/mixins.scss' as m;
+
+.title {
+  font-size: v.$titlesize;
+  font-family: v.$title;
+  color: v.$dark-title;
+}
+
+.big-container {
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2%;
+  height: 100%;
+  padding-top: 6rem;
+
+  &__container {
+    margin-bottom: 4%;
+    padding: 4%;
+    width: 45%;
+    background-color: v.$grey-bg;
+    border-radius: 10px;
+    @include m.tablet {
+      width: 30%;
+    }
+    @include m.desktop {
+      width: 22%;
+    }
+
+    &__btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5em;
+      justify-content: center;
+      font-family: v.$regular;
+      font-size: v.$regularsize;
+
+      #delete {
+        background-color: #d27685;
+        color: v.$dark-title;
+        text-align: center;
+      }
+      #inspect {
+        background-color: rgba(33, 104, 105, 0.58);
+        text-align: center;
+        color: v.$dark-title;
+      }
+      #edit {
+        background-color: #fdd36a;
+        text-align: center;
+        color: v.$dark-title;
+      }
+    }
+
+    &__info {
+      font-size: v.$regularsize;
+      color: v.$olive;
+    }
+
+    &__icons {
+      font-size: 1.5rem;
+      color: v.$color-primary;
+    }
+  }
+}

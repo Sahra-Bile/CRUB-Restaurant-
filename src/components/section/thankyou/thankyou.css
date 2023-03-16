@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mynerve&display=swap");
+/* GENERAL CONTAINER VARIABLES */
+/* BORDER RADIUS VARIABLES */
+/* GENERAL TRANSITION VARIABLE */
+.thankyou {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 14em);
+  background-color: rgba(195, 191, 191, 0.414);
+}
+.thankyou__container__header {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: "Prata", serif;
+  color: rgb(45, 66, 6);
+}
+@media screen and (min-width: 1200px) {
+  .thankyou__container__header {
+    font-size: 4rem;
+  }
+}
+.thankyou__container__paragraph {
+  margin-bottom: 40px;
+  font-family: "Jaldi", sans-serif;
+  color: rgb(87, 96, 71);
+}
+@media screen and (min-width: 676px) {
+  .thankyou__container__paragraph {
+    font-size: 1.6rem;
+  }
+}
+.thankyou__button {
+  width: 130px;
+  height: 50px;
+  background-color: rgba(33, 104, 105, 0.58);
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: 2px 2px 10px black;
+}
+.thankyou__button:hover {
+  border-color: hsl(132, 5%, 94%);
+  transform: translateY(-0.5rem);
+}/*# sourceMappingURL=thankyou.css.map */

@@ -1,4 +1,5 @@
 @use "./components/style/variables.scss" as v;
+@use './components/style/mixins.scss' as m;
 
 * {
   margin: 0;
@@ -15,26 +16,22 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: v.$regular, 'Montserrat', sans-serif;
   line-height: 1.6;
   font-size: 0.9rem;
+  background-color: v.$grey-bg;
 }
-/* GENERAL CONTAINER CLASS */
+
+//  GENERAL CONTAINER CLASS
 .container {
-  width: v.$container-width-lg;
+  width: v.$container-width-lg 76%;
   margin-inline: auto;
   max-width: 1920px;
 }
 
-/* GENERAL SECTION STYLES */
+//GENERAL SECTION STYLES
 section {
-  padding: 10rem 0;
-  background: v.$color-light;
-  transition: v.$transition;
-}
-
-section:nth-child(even) {
-  background: v.$color-white;
+  padding: 5rem 0;
 }
 
 section > h2 {
@@ -51,41 +48,6 @@ section > p {
 a {
   color: v.$color-white;
   transition: v.$transition;
-}
-
-/* GENERAL HEADING STYLES */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.1;
-  color: v.$color-black;
-}
-
-h1 {
-  font-size: 3rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.6rem;
-}
-
-h4 {
-  font-size: 1.1rem;
-}
-
-h5 {
-  font-size: 0.95rem;
-}
-
-h6 {
-  font-size: 0.8rem;
 }
 
 /* GENERAL IMAGES STYLES */
@@ -108,6 +70,11 @@ img {
   border: 2px solid transparent;
   border-radius: v.$border-radius-2;
   cursor: pointer;
+  font-family: v.$regular;
+
+  @include m.desktop {
+    font-size: 1.5rem;
+  }
 }
 
 .btn:hover {
@@ -127,22 +94,21 @@ img {
 }
 
 .btn.primary {
-  background: v.$color-primary;
-
-  color: white;
+  background: rgba(33, 104, 105, 0.58);
+  color: v.$offwhite;
 }
 
 .btn.primary:hover {
   background: transparent;
-  border-color: v.$color-primary;
-  color: v.$color-primary;
+  border-color: rgba(33, 104, 105, 0.58);
+  color: rgba(33, 104, 105, 0.58);
 }
 
 .btn.sm {
   padding: 0.5rem 1.2rem;
 }
 
-/* MEDIA QUERIES (tablets) */
+//MEDIA QUERIES (tablets)
 @media screen and (max-width: 1024px) {
   body {
     font-size: 1rem;
@@ -152,43 +118,19 @@ img {
     width: v.$container-width-md;
   }
 
-  section {
-    padding: 8rem 0;
-  }
-
   section > p {
     width: 72%;
     margin-bottom: 3rem;
   }
 
-  h1 {
-    font-size: 2rem;
-  }
-}
+  /* MEDIA QUERIES (phones) */
+  @media screen and (max-width: 600px) {
+    .btn {
+      padding: 0.6rem 1.5rem;
+    }
 
-/* MEDIA QUERIES (phones) */
-@media screen and (max-width: 600px) {
-  h1 {
-    font-size: 2.4rem;
-  }
-
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  h3 {
-    font-size: 1.4rem;
-  }
-
-  h4 {
-    font-size: 1rem;
-  }
-
-  .btn {
-    padding: 0.6rem 1.5rem;
-  }
-
-  section > p {
-    width: v.$container-width-md;
+    section > p {
+      width: v.$container-width-md;
+    }
   }
 }

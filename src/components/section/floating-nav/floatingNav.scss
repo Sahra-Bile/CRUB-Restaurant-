@@ -7,6 +7,7 @@
   position: fixed;
   bottom: 3rem;
   left: 50%;
+  font-size: 2rem;
   transform: translateX(-50%);
   z-index: 9;
   animation: animateFloatingNav 300ms ease forwards;
@@ -29,7 +30,8 @@
   .scrollspy {
     display: flex;
     gap: 1rem;
-    background: rgba(0, 0, 0, 0.4);
+    background: v.$olivetrans;
+    // background: rgba(0, 0, 0, 0.4);
     padding: 0.8rem 1.5rem;
     border-radius: 3rem;
     backdrop-filter: blur(20px);
@@ -41,9 +43,9 @@
     font-size: 1.3rem;
     color: white;
     display: grid;
-
-    &.active {
-      background: rgba(33, 104, 105, 0.58);
-    }
   }
 }
+
+// .active {
+//   background: rgba(33, 104, 105, 0.58);
+// }
