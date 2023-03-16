@@ -3,8 +3,8 @@
 
 .footer {
   width: 100%;
-
-  background-color: v.$darker-bg;
+  background: rgba(33, 104, 105, 0.58);
+  // background-color: v.$darker-bg;
 
   &__container {
     display: flex;
@@ -19,10 +19,9 @@
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-    
     }
 
-    @include m.desktop{
+    @include m.desktop {
       height: 10rem;
     }
 

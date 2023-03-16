@@ -1,14 +1,13 @@
 @use '../../style/variables.scss' as v;
 @use '../../style/mixins.scss' as m;
 
-.title{
+.title {
   font-size: v.$titlesize;
   font-family: v.$title;
   color: v.$dark-title;
 }
 
 .big-container {
-  
   display: flex;
   gap: 1em;
   flex-direction: row;
@@ -24,11 +23,18 @@
     width: 45%;
     background-color: v.$grey-bg;
     border-radius: 10px;
-    &__btns{
+    @include m.tablet {
+      width: 30%;
+    }
+    @include m.desktop {
+      width: 22%;
+    }
+
+    &__btns {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1em;
+      gap: 1.5em;
       justify-content: center;
       align-items: center;
       gap: 1rem;
@@ -38,27 +44,28 @@
       font-family: v.$regular;
       font-size: v.$regularsize;
       color: v.$dark-title;
-      padding: 0.4;
+      padding: 0.4px;
       width: 170px;
-      
-      #delete{
-        background-color: #D27685;
+
+      @include m.desktop {
+        width: 230px;
       }
-      #inspect{
-      background-color: rgba(33, 104, 105, 0.58);
+
+      #delete {
+        background-color: #d27685;
+        text-align: center;
       }
-      #edit{
-        background-color: #FDD36A;
+      #inspect {
+        background-color: rgba(33, 104, 105, 0.58);
+        text-align: center;
+      }
+      #edit {
+        background-color: #fdd36a;
+        text-align: center;
       }
     }
-    
-    @include m.tablet{
-      width: 30%;
-    }
-    @include m.desktop{
-      width: 22%;
-    }
-    &__info{
+
+    &__info {
       font-size: v.$regularsize;
       color: v.$olive;
     }

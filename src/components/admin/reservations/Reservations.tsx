@@ -7,7 +7,6 @@ import { deleteBookingById } from '../../../services/handleBookingsAxios'
 import { AdminBookingsContext } from '../../../contexts/AdminBookingsContext'
 import './reservation.scss'
 import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
 
 export const Reservation = () => {
   const [contextBookings, setContextBookings] = useState<IBookingsResponse[]>(
@@ -19,7 +18,7 @@ export const Reservation = () => {
     if (window.confirm('Är du säkert att du vill ta bort bokningen?')) {
       deleteBookingById(id)
         .then(() => {
-          toast('Bokningen är bort tagen.')
+          alert('Bokningen är bort tagen.')
 
           window.location.reload()
         })
@@ -30,9 +29,14 @@ export const Reservation = () => {
   }
 
   useEffect(() => {
+    const sortedList = bookings
+      .slice(0)
+      .sort(
+        (a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time),
+      )
     if (contextBookings.length > 0) return
-    setContextBookings(bookings)
-  }, [contextBookings.length, bookings])
+    setContextBookings(sortedList)
+  }, [bookings, contextBookings.length])
 
   let html = contextBookings.map((reservation) => {
     return (
@@ -54,13 +58,13 @@ export const Reservation = () => {
           <p className="big-container__container__icons">
             <BsFillPeopleFill />
           </p>
-          <span className="big-container__container__info">
+          <span className="  big-container__container__info">
             {reservation.numberOfGuests}
           </span>
 
-          <article className="big-container__container__btns">
+          <div className="  big-container__container__btns">
             <button
-              className="big-container__container__btns"
+              className=" btn big-container__container__btns"
               id="delete"
               onClick={() => {
                 handleDeleteClick(reservation._id)
@@ -69,16 +73,22 @@ export const Reservation = () => {
               Ta bort
             </button>
             <Link to={`/bookingdetails/${reservation.customerId}`}>
-              <button className="big-container__container__btns" id="inspect">
+              <button
+                className=" btn big-container__container__btns"
+                id="inspect"
+              >
                 Bokningsdetaljer
               </button>
             </Link>
             <Link to={`/edit/${reservation._id}`}>
-              <button className="big-container__container__btns" id="edit">
+              <button
+                className=" btn  big-container__container__btns"
+                id="edit"
+              >
                 Redigera
               </button>
             </Link>
-          </article>
+          </div>
         </div>
       </>
     )

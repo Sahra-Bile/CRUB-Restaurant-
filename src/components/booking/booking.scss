@@ -12,7 +12,7 @@
     height: 100px;
 
     &:after {
-      content: " ";
+      content: ' ';
       display: block;
       width: 100px;
       height: 100px;
@@ -30,9 +30,14 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: white;
+    background: rgba(119, 174, 177, 0.58);
     padding: 40px;
     min-height: 100vh;
+
+    @include m.desktop {
+      // padding: 80px;
+      width: 100%;
+    }
 
     &__text {
       text-align: center;
@@ -41,37 +46,49 @@
       color: v.$olive;
     }
 
-      &__form1 {
-        background: rgba(33, 104, 105, 0.58);
-        max-width: 1200px;
-        width: 90%;
-        margin: 17vh auto 0 auto;
-        padding: 40px;
-        margin-bottom: 40px;
-        margin-top: 30px;
-        border-radius: 3px;
-        box-sizing: border-box;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    &__form1 {
+      background: rgba(33, 104, 105, 0.58);
+      max-width: 1200px;
+      width: 90%;
+      margin: 17vh auto 0 auto;
+      padding: 40px;
+      margin-bottom: 40px;
+      margin-top: 30px;
+      border-radius: 3px;
+      box-sizing: border-box;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-        &__container1 {
+      &__container1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        @include m.desktop {
+          flex-direction: row;
+          justify-content: space-evenly;
+          gap: 50px;
+        }
+
+        &__select-div {
           display: flex;
           flex-direction: column;
-          justify-content: center;
           align-items: center;
-          gap: 10px;
+          gap: 15px;
+        }
 
-        
-          &__calender-div {
-            width: 300px;
+        &__calender-div {
+          width: 300px;
 
-            @include m.tablet {
-              width: none;
-            }
+          @include m.desktop {
+            // width: 1000px;
           }
         }
       }
+    }
     .calender {
       font-size: 1rem;
       padding: 15px;
@@ -102,7 +119,7 @@
         text-align: center;
         font-family: v.$regular;
         font-size: v.$regularsize;
-        color: v.$color-primary;
+        color: #fff;
 
         @include m.desktop {
           font-size: 1.2rem;
@@ -144,7 +161,7 @@
 
     //*andra
     .lds-dual-ring:after {
-      content: " ";
+      content: ' ';
       display: block;
       width: 64px;
       height: 64px;
@@ -184,6 +201,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      @include m.desktop {
+        max-width: none;
+        width: 100%;
+      }
 
       &__container2 {
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -249,13 +271,16 @@
   font-family: v.$title;
 
   @include m.desktop {
-    font-size: 1.8rem;
+    font-size: 2.6rem;
   }
 }
 .result {
   font-size: v.$regularsize;
   font-family: v.$regular;
   color: v.$color-primary;
+  @include m.desktop {
+    font-size: 2rem;
+  }
 }
 .time {
   background-color: v.$olive;

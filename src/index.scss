@@ -1,4 +1,5 @@
 @use "./components/style/variables.scss" as v;
+@use './components/style/mixins.scss' as m;
 
 * {
   margin: 0;
@@ -12,7 +13,6 @@
 
 html {
   scroll-behavior: smooth;
-
 }
 
 body {
@@ -29,7 +29,7 @@ body {
   max-width: 1920px;
 }
 
-//GENERAL SECTION STYLES 
+//GENERAL SECTION STYLES
 section {
   padding: 5rem 0;
 }
@@ -107,6 +107,10 @@ img {
   border-radius: v.$border-radius-2;
   cursor: pointer;
   font-family: v.$regular;
+
+  @include m.desktop {
+    font-size: 1.5rem;
+  }
 }
 
 .btn:hover {

@@ -6,13 +6,14 @@
   height: 4rem;
   display: grid;
   place-items: center;
-  background: v.$darker-bg;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9;
-  box-shadow: 0 1rem 1.5rem hsla(v.$primary-hue, 68%, 42%, 20%);
-  transition: v.$transition;
+  // background: v.$darker-bg;
+  background: rgba(33, 104, 105, 0.58);
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // z-index: 9;
+  // box-shadow: 0 1rem 1.5rem hsla(v.$primary-hue, 68%, 42%, 20%);
+  // transition: v.$transition;
 
   &__container {
     display: flex;
@@ -23,7 +24,9 @@
     max-width: 1920px;
 
     &__logo {
-      color: v.$olive;
+      color: v.$offwhite;
+      // color: #fff;
+      // color: v.$olive;
       font-family: v.$title;
     }
 

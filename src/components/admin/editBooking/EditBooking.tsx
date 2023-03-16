@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Calendar from 'react-calendar'
 import { Controller, FieldValues, useForm } from 'react-hook-form'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import {
   bookingsDefaultValue,
@@ -81,6 +81,7 @@ export const EditBooking = () => {
         data.date,
         data.numberOfGuests,
       )
+
       if (
         (data.time === '12:00' && isAvailableinDB.theFirstSitting === true) ||
         (data.time === '19:00' && isAvailableinDB.theFirstSitting === true)
@@ -177,9 +178,6 @@ export const EditBooking = () => {
             <button type="submit" className="btn primary">
               uppdatera bokningen
             </button>
-            <Link to={'/admin'} className="btn primary">
-              go tillbaka
-            </Link>
 
             {isAvailable.theFirstSitting ? (
               <></>

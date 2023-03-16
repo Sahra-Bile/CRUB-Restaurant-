@@ -92,8 +92,8 @@ export const Booking = () => {
                 onSubmit={handleSubmit(HandleOnFirstSubmit)}
               >
                 <div className="big-container__step__form1__container1">
-                  <label className="label">Välj ett datum:</label>
                   <div className="big-container__step__form1__container1__calender-div">
+                    <label className="label">Välj ett datum:</label>
                     <Controller
                       control={control}
                       name="date"
@@ -109,47 +109,50 @@ export const Booking = () => {
                     />
                   </div>
                   {errors.date && <p className="error"> Välj ett datum:</p>}
-                  <label className="label">Antal personer</label>
-                  <select
-                    className="select"
-                    {...register('numberOfGuests', {
-                      required: true,
-                      min: 1,
-                      max: 12,
-                    })}
-                    defaultValue="0"
-                  >
-                    <option disabled value="0">
-                      0
-                    </option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
-                  {errors.numberOfGuests && (
-                    <span className="error">Välj antal personer:</span>
-                  )}
-                  <div className="info">
-                    <p className="info__p">
-                      Max per bord: 6 <br />
-                      Om bokningen gäller fler än sex personer <br /> kommer
-                      sällskapet att delas upp på flera bord.
-                    </p>
+                  <div className="big-container__step__form1__container1__select-div">
+                    <label className="label">Antal personer</label>
+                    <select
+                      className="select"
+                      {...register('numberOfGuests', {
+                        required: true,
+                        min: 1,
+                        max: 12,
+                      })}
+                      defaultValue="0"
+                    >
+                      <option disabled value="0">
+                        0
+                      </option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+
+                    {errors.numberOfGuests && (
+                      <span className="error">Välj antal personer:</span>
+                    )}
+                    <div className="info">
+                      <p className="info__p">
+                        Max per bord: 6 <br />
+                        Om bokningen gäller fler än sex personer <br /> kommer
+                        sällskapet att delas upp på flera bord.
+                      </p>
+                    </div>
+                    <input
+                      type="submit"
+                      value={'Kontrollera tillgänglighet'}
+                      className=" btn primary"
+                    />
                   </div>
-                  <input
-                    type="submit"
-                    value={'Kontrollera tillgänglighet'}
-                    className=" btn primary"
-                  />
                 </div>
               </form>
             </>
