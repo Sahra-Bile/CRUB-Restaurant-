@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+## CRUB.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A school project at Medieinstitutet working with React and a custom API.
 
-## Available Scripts
+This project was created by Tove Boson, Sahra Bile and Henrietta Jeansson in March 2023 and has been continously uploaded to github. Where we suppose you found it.
 
-In the project directory, you can run:
+## clone this repository
+
+If you wish to download this piece of React magic, clone this repository from github.
+
+## npm i
+
+We have some special packages installed which you will need to install on your own computer to run our project. Just enter "npm i" in your termial while standing in this folder and you will get all our customs from package.json.
+
+After that, in the project directory, you can run:
 
 ### `npm start`
 
@@ -14,33 +22,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+## working process
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project was pretty difficult at times. To push through we had a good working partnership and lots of laughs. We prioritate authencity and when we found some things more diffucult and like they would never work out; we supported, listened and communicated without judgement.
 
-### `npm run build`
+We also have very different styles and taste when it comes to the visual interface. But with respect for each other and stepping back when someone elses idea seems to work better, we are truly very happy with the finished product. And also very happy this is over.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Jokes aside, this was a good project to practice working with react on a deeper level and also learning more about CRUD operations.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Thank you for reading this far and hope you find some charm in this project. 
