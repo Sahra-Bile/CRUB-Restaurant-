@@ -32,47 +32,64 @@ export const Reservation = () => {
   useEffect(() => {
     if (contextBookings.length > 0) return
     setContextBookings(bookings)
-  })
+  }, [contextBookings.length, bookings])
 
   let html = contextBookings.map((reservation) => {
     return (
       <>
         <div className="big-container__container" key={reservation._id}>
           <p className="big-container__container__icons">
-            <MdDateRange /> {reservation.date}
+            <MdDateRange />
           </p>
-          <p className="big-container__container__icons">
+          <span className="big-container__container__info">
             {' '}
-            <MdAccessTime />
-            {reservation.time}
+            {reservation.date}
+          </span>
+          <p className="big-container__container__icons">
+            <MdAccessTime />{' '}
           </p>
+          <span className="big-container__container__info">
+            {reservation.time}
+          </span>
           <p className="big-container__container__icons">
             <BsFillPeopleFill />
-            {reservation.numberOfGuests}
           </p>
+          <span className="big-container__container__info">
+            {reservation.numberOfGuests}
+          </span>
 
-          <button
-            className="btn primary"
-            onClick={() => {
-              handleDeleteClick(reservation._id)
-            }}
-          >
-            ta bort
-          </button>
-          <Link to={`/bookingdetails/${reservation.customerId}`}>
-            <button className="btn primary">mer info</button>
-          </Link>
-          <Link to={`/edit/${reservation._id}`}>
-            <button className="btn primary">edit</button>
-          </Link>
+          <article className="big-container__container__btns">
+            <button
+              className="big-container__container__btns"
+              id="delete"
+              onClick={() => {
+                handleDeleteClick(reservation._id)
+              }}
+            >
+              Ta bort
+            </button>
+            <Link to={`/bookingdetails/${reservation.customerId}`}>
+              <button className="big-container__container__btns" id="inspect">
+                Bokningsdetaljer
+              </button>
+            </Link>
+            <Link to={`/edit/${reservation._id}`}>
+              <button className="big-container__container__btns" id="edit">
+                Redigera
+              </button>
+            </Link>
+          </article>
         </div>
       </>
     )
   })
 
   return (
-    <div className="big-container">
-      <>{html}</>
-    </div>
+    <section>
+      <h1 className="title">Bokningsöversikt</h1>
+      <div className="big-container">
+        <>{html}</>
+      </div>
+    </section>
   )
 }

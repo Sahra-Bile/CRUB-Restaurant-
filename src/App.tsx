@@ -8,12 +8,10 @@ import { IBookingsResponse } from './models/IBooking'
 import { useEffect, useState } from 'react'
 import { AdminBookingsContext } from './contexts/AdminBookingsContext'
 
-export interface IAdminBookingsContext {
-  handleDeleteClick(id: string): void
-}
-
-
 function App() {
+  if (window.top !== window.self) {
+  }
+
   const [bookings, setBookings] = useState<IBookingsResponse[]>([])
 
   useEffect(() => {

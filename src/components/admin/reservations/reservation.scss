@@ -1,5 +1,14 @@
+@use '../../style/variables.scss' as v;
+@use '../../style/mixins.scss' as m;
+
+.title{
+  font-size: v.$titlesize;
+  font-family: v.$title;
+  color: v.$dark-title;
+}
+
 .big-container {
-  border: 1px solid green;
+  
   display: flex;
   gap: 1em;
   flex-direction: row;
@@ -7,14 +16,56 @@
   justify-content: center;
   gap: 2%;
   height: 100%;
+  padding-top: 6rem;
 
   &__container {
-    border: 5px solid blue;
-    gap: 2em;
-    width: 60%;
+    margin-bottom: 4%;
+    padding: 4%;
+    width: 45%;
+    background-color: v.$grey-bg;
+    border-radius: 10px;
+    &__btns{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      border: 2px solid transparent;
+      border-radius: v.$border-radius-2;
+      cursor: pointer;
+      font-family: v.$regular;
+      font-size: v.$regularsize;
+      color: v.$dark-title;
+      padding: 0.4;
+      width: 170px;
+      
+      #delete{
+        background-color: #D27685;
+      }
+      #inspect{
+      background-color: rgba(33, 104, 105, 0.58);
+      }
+      #edit{
+        background-color: #FDD36A;
+      }
+    }
+    
+    @include m.tablet{
+      width: 30%;
+    }
+    @include m.desktop{
+      width: 22%;
+    }
+    &__info{
+      font-size: v.$regularsize;
+      color: v.$olive;
+    }
 
     &__icons {
       font-size: 1.5rem;
+      color: v.$color-primary;
     }
   }
 }
