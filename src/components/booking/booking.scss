@@ -20,7 +20,7 @@
       border-radius: 50%;
       border: 6px solid #fff;
       border-color: #fff transparent #fff transparent;
-      animation: lds-dual-ring 7.2s ease-in infinite;
+      animation: lds-dual-ring 5.2s ease-in infinite;
     }
   }
 
@@ -35,8 +35,8 @@
     min-height: 100vh;
 
     @include m.desktop {
-      // padding: 80px;
-      width: 100%;
+      padding: 80px;
+      width: 80%;
     }
 
     &__text {
@@ -82,10 +82,6 @@
 
         &__calender-div {
           width: 300px;
-
-          @include m.desktop {
-            // width: 1000px;
-          }
         }
       }
     }
@@ -133,24 +129,6 @@
       background-color: v.$olive;
       font-size: 1.3rem;
       font-family: v.$regular;
-    }
-
-    @keyframes Loading-animation {
-      0% {
-        transform: rotate(90deg);
-      }
-      25% {
-        transform: rotate(120deg);
-      }
-      50% {
-        transform: rotate(180deg);
-      }
-      75% {
-        transform: rotate(270deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
     }
 
     .lds-dual-ring {
@@ -225,7 +203,8 @@
           color: black;
           width: 250px;
           @include m.desktop {
-            width: 350px;
+            width: 450px;
+            padding: 30px;
           }
 
           &__gdprContainer {

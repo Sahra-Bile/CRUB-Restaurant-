@@ -1,53 +1,37 @@
 @use '../../style/variables.scss' as v;
 @use '../../style/mixins.scss' as m;
-.article {
-  // margin-top: 15%;
-  width: 100%;
-  
 
-  &-title {
-    font-family: v.$title;
-    margin-top: 10%;
-    margin-bottom: 5%;
-  }
-
-  border: 1px solid green;
-  display: flex;
-  gap: 1em;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2%;
-  height: 100%;
-
-  &__flex {
-    width: 100%;
-    &__items {
-      border: 10px solid blue;
-      gap: 2em;
-      width: 100%;
-      &__info {
-        padding: 2em;
-      }
-    }
-  }
-}
-.details-page{
+.details-page {
   height: calc(100vh - 14rem);
-  padding-top: 5em;
-  &__container{
-padding: 6em;
-  
   background-color: v.$olive-low;
-    &__title{
+
+  &__container {
+    padding-top: 3rem;
+    @include m.tablet {
+      padding: 10em;
+    }
+
+    &__title {
       font-family: v.$title;
       font-size: 2.4em;
+      padding-bottom: 4rem;
+      @include m.tablet {
+        font-size: 3rem;
+      }
     }
-    &__text{
+    &__text {
       font-family: v.$regular;
-      font-size: 1.2em;
-      &__info{
-        color: darkolivegreen;
+      font-size: v.$regularsize;
+      color: v.$olive;
+      @include m.tablet {
+        font-size: 1.6rem;
+      }
+
+      &__info {
+        color: v.$dark-title;
+        @include m.tablet {
+          font-size: 1.7rem;
+        }
       }
     }
   }

@@ -9,9 +9,6 @@ import { useEffect, useState } from 'react'
 import { AdminBookingsContext } from './contexts/AdminBookingsContext'
 
 function App() {
-  if (window.top !== window.self) {
-  }
-
   const [bookings, setBookings] = useState<IBookingsResponse[]>([])
 
   useEffect(() => {

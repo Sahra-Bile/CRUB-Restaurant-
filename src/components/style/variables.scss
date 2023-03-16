@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mynerve&display=swap');
 
-$tablet_breakpont: 676px;
+$tablet_breakpoint: 676px;
 $desktop_breakpoint: 1200px;
 
 $primary-hue: 132;
@@ -12,9 +12,11 @@ $light-lightness: 94%;
 $white-lightness: 100%;
 $color-primary: hsl(132, 18%, 42);
 $olive: rgb(87, 96, 71);
+
+$olivetrans: rgba(82, 90, 67, 0.583);
 $darker-bg: rgb(145, 184, 166);
 $dark-title: rgb(45, 66, 6);
-$olive-low: rgba(87, 96, 71, 0.231);
+$olive-low: rgba(87, 96, 71, 0.063);
 $grey-bg: rgba(186, 187, 183, 0.231);
 
 $offwhite: #f8f2e5;

@@ -8,14 +8,19 @@ import { createBooking } from '../../services/handleBookingsAxios'
 import { useNavigate } from 'react-router-dom'
 
 export const Booking = () => {
-  const [step, setStep] = useState(1) //! kolla fas sökning
+  //* useState håller koll på våra olika steg i sökningen fram till genomförd bokning:
+  const [step, setStep] = useState(1)
+
   const [isLoading, setIsLoading] = useState(false)
+
   const [isAvailable, setIsAvailable] = useState<ISittings>({
     theFirstSitting: false,
     theSecondSitting: false,
   })
   const [sitting, setSitting] = useState(0)
+
   const [time, setTime] = useState('')
+
   const navigate = useNavigate()
 
   const {
@@ -38,20 +43,20 @@ export const Booking = () => {
 
   const HandleOnFirstSubmit = () => {
     setIsLoading(true)
+
+    //* Skickar datum och antal personer till conditional-filen som går igenom om bokningen kan genomföras
     const checkAvailable = async () => {
       const isAvailableinDB = await checkAvailableTables(
         date.toLocaleDateString(),
         numberOfGuests,
       )
-      console.log('Available', isAvailableinDB)
-
       setIsAvailable(isAvailableinDB)
     }
     checkAvailable()
     setStep(2)
     setIsLoading(false)
   }
-  //*  Genomför bokning
+  //*  Får data från första formuläret/funktionen och skickar objektet med aktuella datan till DB
   const HandleOnSecondSubmit = async () => {
     let booking = {
       restaurantId: '64089b0d76187b915f68e16f',
@@ -70,8 +75,6 @@ export const Booking = () => {
 
     createBooking(booking).then((resData) => {
       setIsLoading(false)
-      console.log('Detta är det vi får tillbaka', resData)
-
       navigate('/booking/thankyou/' + resData.insertedId)
     })
 
@@ -107,8 +110,9 @@ export const Booking = () => {
                         />
                       )}
                     />
+                    {errors.date && <p className="error"> Välj ett datum:</p>}
                   </div>
-                  {errors.date && <p className="error"> Välj ett datum:</p>}
+
                   <div className="big-container__step__form1__container1__select-div">
                     <label className="label">Antal personer</label>
                     <select
@@ -181,9 +185,7 @@ export const Booking = () => {
                     Boka kl. 12:00
                   </button>
                 ) : (
-                  <p className="result">
-                    Första sittningen är inte tillgänglig
-                  </p>
+                  <p className="result">Lunchsittningen är inte tillgänglig</p>
                 )}
 
                 {isAvailable.theSecondSitting ? (
@@ -199,7 +201,7 @@ export const Booking = () => {
                   </button>
                 ) : (
                   <span className="result">
-                    Andra sittningen är inte tillgänglig
+                    Middagssittningen är inte tillgänglig
                   </span>
                 )}
               </div>

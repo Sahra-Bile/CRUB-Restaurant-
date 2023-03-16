@@ -2,11 +2,10 @@
 @use '../../style/mixins.scss' as m;
 
 .about-container {
- 
   &__article {
     margin: 1em;
     padding: 3em;
-    
+
     &__title {
       font-family: v.$title;
       color: v.$olive;
@@ -27,7 +26,6 @@
       width: 50%;
       margin-left: 40%;
       margin-top: 30%;
-      // z-index: 40%;
       background: v.$whiter;
       opacity: 90%;
       &__title {

@@ -1,7 +1,7 @@
 @use "variables" as v;
 
 @mixin tablet {
-  @media screen and (min-width: v.$tablet_breakpont) {
+  @media screen and (min-width: v.$tablet_breakpoint) {
     @content;
   }
 }

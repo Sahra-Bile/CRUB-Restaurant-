@@ -36,32 +36,23 @@
       align-items: center;
       gap: 1.5em;
       justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      border: 2px solid transparent;
-      border-radius: v.$border-radius-2;
-      cursor: pointer;
       font-family: v.$regular;
       font-size: v.$regularsize;
-      color: v.$dark-title;
-      padding: 0.4px;
-      width: 170px;
-
-      @include m.desktop {
-        width: 230px;
-      }
 
       #delete {
         background-color: #d27685;
+        color: v.$dark-title;
         text-align: center;
       }
       #inspect {
         background-color: rgba(33, 104, 105, 0.58);
         text-align: center;
+        color: v.$dark-title;
       }
       #edit {
         background-color: #fdd36a;
         text-align: center;
+        color: v.$dark-title;
       }
     }
 

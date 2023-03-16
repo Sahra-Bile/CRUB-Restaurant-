@@ -5,17 +5,27 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 14em);
   background-color: rgba(195, 191, 191, 0.414);
 
   &__container {
     &__header {
-      font-size: 40px;
+      font-size: v.$titlesize;
       margin-bottom: 20px;
+      font-family: v.$title;
+      color: v.$dark-title;
+      @include m.desktop {
+        font-size: 4rem;
+      }
     }
 
     &__paragraph {
       margin-bottom: 40px;
+      font-family: v.$regular;
+      color: v.$olive;
+      @include m.tablet {
+        font-size: 1.6rem;
+      }
     }
   }
   &__button {

@@ -7,24 +7,19 @@ import {
 } from "../models/IBooking";
 import { ICustomer } from "../models/ICustomer";
 
-
+//* Våran restaurangs id i databasen
 const resturantId = "64089b0d76187b915f68e16f";
 
 
 const url: string =
   "https://school-restaurant-api.azurewebsites.net/booking/restaurant/";
 
- 
-
-
-//* all bookings
-
+//* Anropar api
 export const getAllBookings = async (): Promise<IBookingsResponse[]> => {
   let response = await axios.get(url + resturantId);
 
   return response.data;
 };
-
 
 const BASE_URL: string =
   "https://school-restaurant-api.azurewebsites.net/booking/create";
@@ -38,13 +33,7 @@ export const createBooking = async (
   return response.data;
 };
 
-
-
-
 const BASE_URL_2: string = 'https://school-restaurant-api.azurewebsites.net/booking/';
-
-
-
 
 export async function getBookingById (id: string):Promise<IBooking[]> {
 
@@ -52,12 +41,6 @@ export async function getBookingById (id: string):Promise<IBooking[]> {
 
   return response.data;
 }
-
-
-
-
-
-
 
 const url_3: string =
   "https://school-restaurant-api.azurewebsites.net/booking/delete/";
@@ -72,8 +55,6 @@ export const deleteBookingById = async (
 
 const url_5: string =
   "https://school-restaurant-api.azurewebsites.net/booking/update/";
-
-
 
  export const editBookingById = async(id:string, booking: 
 

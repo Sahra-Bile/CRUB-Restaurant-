@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: v.$regular, 'Montserrat', sans-serif;
   line-height: 1.6;
   font-size: 0.9rem;
   background-color: v.$grey-bg;
@@ -48,42 +48,6 @@ section > p {
 a {
   color: v.$color-white;
   transition: v.$transition;
-}
-
-//GENERAL HEADING STYLES
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.1;
-  color: v.$color-black;
-}
-
-h1 {
-  font-size: 3rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.6rem;
-}
-
-h4 {
-  font-size: 1.1rem;
-}
-
-h5 {
-  font-size: 0.95rem;
-}
-
-h6 {
-  font-size: 0.8rem;
 }
 
 /* GENERAL IMAGES STYLES */
@@ -131,7 +95,6 @@ img {
 
 .btn.primary {
   background: rgba(33, 104, 105, 0.58);
-
   color: v.$offwhite;
 }
 
@@ -160,34 +123,14 @@ img {
     margin-bottom: 3rem;
   }
 
-  h1 {
-    font-size: 2rem;
-  }
-}
+  /* MEDIA QUERIES (phones) */
+  @media screen and (max-width: 600px) {
+    .btn {
+      padding: 0.6rem 1.5rem;
+    }
 
-/* MEDIA QUERIES (phones) */
-@media screen and (max-width: 600px) {
-  h1 {
-    font-size: 2.4rem;
-  }
-
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  h3 {
-    font-size: 1.4rem;
-  }
-
-  h4 {
-    font-size: 1rem;
-  }
-
-  .btn {
-    padding: 0.6rem 1.5rem;
-  }
-
-  section > p {
-    width: v.$container-width-md;
+    section > p {
+      width: v.$container-width-md;
+    }
   }
 }

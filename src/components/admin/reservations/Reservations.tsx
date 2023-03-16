@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { BsFillPeopleFill } from 'react-icons/bs'
 import { MdAccessTime, MdDateRange } from 'react-icons/md'
-
 import { IBookingsResponse } from '../../../models/IBooking'
 import { deleteBookingById } from '../../../services/handleBookingsAxios'
 import { AdminBookingsContext } from '../../../contexts/AdminBookingsContext'
@@ -15,10 +14,10 @@ export const Reservation = () => {
   const bookings = useContext(AdminBookingsContext)
 
   const handleDeleteClick = (id: string) => {
-    if (window.confirm('Är du säkert att du vill ta bort bokningen?')) {
+    if (window.confirm('Är du säker att du vill ta bort bokningen?')) {
       deleteBookingById(id)
         .then(() => {
-          alert('Bokningen är bort tagen.')
+          alert('Bokningen är borttagen.')
 
           window.location.reload()
         })
@@ -29,6 +28,7 @@ export const Reservation = () => {
   }
 
   useEffect(() => {
+    //* Sorteringsfunktion så att bokningarna hamnar i datumordning, närmaste bokade datumet med tidigaste sittningen kommer först i listan
     const sortedList = bookings
       .slice(0)
       .sort(
@@ -46,11 +46,10 @@ export const Reservation = () => {
             <MdDateRange />
           </p>
           <span className="big-container__container__info">
-            {' '}
             {reservation.date}
           </span>
           <p className="big-container__container__icons">
-            <MdAccessTime />{' '}
+            <MdAccessTime />
           </p>
           <span className="big-container__container__info">
             {reservation.time}
@@ -64,7 +63,7 @@ export const Reservation = () => {
 
           <div className="  big-container__container__btns">
             <button
-              className=" btn big-container__container__btns"
+              className=" btn primary big-container__container__btns"
               id="delete"
               onClick={() => {
                 handleDeleteClick(reservation._id)
@@ -74,15 +73,15 @@ export const Reservation = () => {
             </button>
             <Link to={`/bookingdetails/${reservation.customerId}`}>
               <button
-                className=" btn big-container__container__btns"
+                className=" btn primary big-container__container__btns"
                 id="inspect"
               >
-                Bokningsdetaljer
+                Kunddetaljer
               </button>
             </Link>
             <Link to={`/edit/${reservation._id}`}>
               <button
-                className=" btn  big-container__container__btns"
+                className=" btn primary big-container__container__btns"
                 id="edit"
               >
                 Redigera

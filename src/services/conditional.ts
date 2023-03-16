@@ -6,7 +6,6 @@ export interface ISittings {
   theSecondSitting: boolean;
 }
 
-
 export const checkAvailableTables = async (
  date: Date,
   numberOfGuests: number,
@@ -21,10 +20,8 @@ export const checkAvailableTables = async (
   let tablesAtLunch: number = 0;
   let tablesAtDinner: number = 0;
  
-
+//** Får listan med totala bokingar
   for (let i = 0; i < response.length; i++) {
-
-    //** */ får listan med totala bokingar
 
     let databaseDate = new Date(response[i].date);
     let inComingDate  = new Date(date)
@@ -32,36 +29,29 @@ export const checkAvailableTables = async (
     if (databaseDate.getDate() === inComingDate.getDate()) {
 
     if (databaseDate.getTime() === inComingDate.getTime()) {
-      
-       
-      //* kollat vilka som matchar önskat datum
+     //* Kontrollerat vilka tillgängliga sittningar som matchar önskat datum
 
   
-       //* Kontroller  första Sittning  1:
+       //* Kontrollerar sittning 1:
        if (response[i].time === '12:00') {
         tablesAtLunch = tablesAtLunch + 1;
         if (response[i].numberOfGuests > 6) {
           tablesAtLunch = tablesAtLunch + 1;
         }
       }
-       //* Sittning 2
+       //* Kontrollerar sittning 2
        if (response[i].time === '19:00') {
         tablesAtDinner = tablesAtDinner + 1;
         if (response[i].numberOfGuests > 6) {
           tablesAtDinner = tablesAtDinner + 1;
         }
       }
-         
-         
   }
   }
-
-  console.log("Tables at lunch:", tablesAtLunch);
-  console.log("Tables at dinner:", tablesAtDinner);
   
   const numberOfTablesForCurrentBooking = Math.ceil(numberOfGuests / 6);
 
-        //*om användaren bokar för fler än 6 personer
+        //* Villkor om användaren bokar för fler än 6 personer 
         if (tablesAtLunch + numberOfTablesForCurrentBooking <= 15) {
           
             isAvailable.theFirstSitting = true;
@@ -69,7 +59,7 @@ export const checkAvailableTables = async (
             isAvailable.theFirstSitting = false;
           }
           
-          //*om användaren bokar för mindre än 6 personer
+          //* Villkor om användaren bokar för mindre än 6 personer
       
         if (tablesAtDinner + numberOfTablesForCurrentBooking <= 15) {
          
@@ -77,17 +67,11 @@ export const checkAvailableTables = async (
           } else {
             isAvailable.theSecondSitting = false;
           }
-          //*om användaren bokar för mindre än 6 personer
-      
         }
 
-         if(tablesAtLunch || tablesAtDinner === 14){
-          alert('vi har ett bord kvar att boka för 6 personer')
-
-         }
-
-       
+        //* Konsolloggar hur många bord som bokats detta datum:
+        console.log("Tables at lunch:", tablesAtLunch);
+        console.log("Tables at dinner:", tablesAtDinner);
+        
     return isAvailable;
-
-   
   }

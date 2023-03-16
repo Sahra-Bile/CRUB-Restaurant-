@@ -1,4 +1,4 @@
-//* få en booking by id
+//* Få en bokning med id:
 export interface IBooking {
   _id: string;
   restaurantId: string;
@@ -8,6 +8,7 @@ export interface IBooking {
   customerId: string;
 }
 
+//* För att uppdatera en existerande bokning:
 export interface IBookingUpdate {
   id: string;
   restaurantId:string;
@@ -17,8 +18,7 @@ export interface IBookingUpdate {
   customerId: string;
 }
 
-
-//* interface för att skapa en bokning
+//* Vårt interface för att skapa en ny bokning:
 export interface INewBooking {
   restaurantId: string;
   date: string;
@@ -32,7 +32,7 @@ export interface INewBooking {
   };
 }
 
-//* interface för att få en lista av all bokingar
+//* Vårt interface för att få en lista med alla bokingar:
 export interface IBookingsResponse {
   _id: string;
   restaurantId: string;
@@ -42,6 +42,7 @@ export interface IBookingsResponse {
   customerId: string;
 }
 
+//* För att skicka ett standardvärde:
  export const  bookingsDefaultValue: IBookingsResponse = {
    _id: '',
    restaurantId: "64089b0d76187b915f68e16f",
@@ -51,7 +52,7 @@ export interface IBookingsResponse {
    customerId: ''
  }
 
-
+//* För att få bokningens unika id när den har skapats:
  export interface IBookingCreated {
   insertedId: string;
 }

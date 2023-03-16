@@ -12,9 +12,8 @@ import { MdPermPhoneMsg } from "react-icons/md";
 
 export const data = [
   { id: 1, link: "/", icon: <AiFillHome /> },
-
-  { id: 3, link: "/booking", icon: <AiOutlineCalendar /> },
-  { id: 4, link: "/menu", icon: <MdOutlineRestaurantMenu /> },
-  { id: 5, link: "/contact", icon: <MdPermPhoneMsg /> },
-  { id: 6, link: "/admin", icon: <RiAdminLine /> },
+  { id: 2, link: "/booking", icon: <AiOutlineCalendar /> },
+  { id: 3, link: "/menu", icon: <MdOutlineRestaurantMenu /> },
+  { id: 4, link: "/contact", icon: <MdPermPhoneMsg /> },
+  { id: 5, link: "/admin", icon: <RiAdminLine /> },
 ];
